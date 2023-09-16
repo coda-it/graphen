@@ -2,11 +2,11 @@ $gc-led-red-center: #f00;
 $gc-led-green-center: #0f0;
 $gc-led-blue-center: #b5f2e4;
 
-@include cx-led-blink (gc-led-red-blink, $gc-led-red-center, $gb-color-danger, $gb-color-danger, rgba(255, 0, 0, 0.5))
-  @include cx-led-blink (gc-led-green-blink, $gc-led-green-center, $gb-color-success, $gb-color-success, rgba(0, 255, 0, 0.5))
-  @include cx-led-blink (gc-led-blue-blink, $gc-led-blue-center, $gb-color-info, $gb-color-info, rgba(0, 0, 255, 0.5))
+@include cx-led-blink (gc-led-red-blink, $gc-led-red-center, $gb-color-danger, $gb-color-danger, rgba(255, 0, 0, 0.5));
+@include cx-led-blink (gc-led-green-blink, $gc-led-green-center, $gb-color-success, $gb-color-success, rgba(0, 255, 0, 0.5));
+@include cx-led-blink (gc-led-blue-blink, $gc-led-blue-center, $gb-color-info, $gb-color-info, rgba(0, 0, 255, 0.5));
 
-  .gc-led {
+.gc-led {
   display: inline-block;
   vertical-align: middle;
   width: 24px;
