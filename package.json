@@ -27,8 +27,8 @@
   "peerDependencies": {
     "classnames": "^2.2.6",
     "lodash": "^4.17.20",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
