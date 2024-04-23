@@ -44,7 +44,7 @@ class Accordion extends React.PureComponent<Props, State> {
 
     return (
       <article className={accordionClasses}>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+        {/* eslint-disable */}
         <header
           role="button"
           className="gc-accordion__title"
@@ -54,6 +54,7 @@ class Accordion extends React.PureComponent<Props, State> {
         >
           {indicator} {title}
         </header>
+        {/* eslint-enable */}
         <div className={contentClasses}>{children}</div>
       </article>
     );

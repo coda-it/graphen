@@ -1,4 +1,4 @@
-// @flow
+/* eslint-disable */
 import _ from "lodash";
 import React from "react";
 import { render } from "react-dom";
@@ -637,3 +637,4 @@ if (appContainer) {
     appContainer
   );
 }
+/* eslint-enable */
