@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 type Props = {
   className?: string,
-  children?: React$Element<any>
+  children?: React$Element<any>,
 };
 
 function Dialog(props: Props) {

@@ -5,7 +5,7 @@ import classNames from "classnames";
 type Props = {
   className?: string,
   children: string,
-  onClick?: () => void
+  onClick?: () => void,
 };
 
 function Button(props: Props) {

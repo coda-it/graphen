@@ -7,7 +7,7 @@ const app = new Koa();
 const router = new Router();
 const template = fs.readFileSync("./public/module.html");
 
-router.get("/", ctx => {
+router.get("/", (ctx) => {
   ctx.type = "html";
   ctx.body = template;
 });

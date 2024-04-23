@@ -7,7 +7,7 @@ type Props = {
   className?: string,
   children?: React$Element<any>,
   type?: string,
-  message?: string | null
+  message?: string | null,
 };
 
 function Validation(props: Props) {

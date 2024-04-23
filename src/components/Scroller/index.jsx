@@ -9,18 +9,18 @@ const BORDER_SIZE = 1;
 type Props = {
   onScrollChange: (value: number) => void,
   min: number,
-  max: number
+  max: number,
 };
 
 type State = {
-  value: number
+  value: number,
 };
 
 class Scroller extends React.PureComponent<Props, State> {
   constructor() {
     super();
     this.state = {
-      value: 0
+      value: 0,
     };
   }
 
@@ -60,11 +60,11 @@ class Scroller extends React.PureComponent<Props, State> {
   move(x: number, vx: number, maxWidth: number) {
     const value = _.min([
       _.max([x, 0]),
-      maxWidth - KNOB_SIZE - 2 * BORDER_SIZE
+      maxWidth - KNOB_SIZE - 2 * BORDER_SIZE,
     ]);
 
     this.setState({
-      value
+      value,
     });
   }
 
@@ -85,7 +85,7 @@ class Scroller extends React.PureComponent<Props, State> {
         <div
           className="gc-scroller__knob"
           style={{
-            left: value
+            left: value,
           }}
         />
         <div
@@ -95,7 +95,7 @@ class Scroller extends React.PureComponent<Props, State> {
             this.onMove(event);
           }}
           style={{
-            left: value
+            left: value,
           }}
         />
       </div>

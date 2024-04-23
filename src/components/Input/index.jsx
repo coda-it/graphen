@@ -7,7 +7,7 @@ type Props = {
   type?: string,
   label: string,
   validation?: string,
-  onChange?: Event => void
+  onChange?: (Event) => void,
 };
 
 function Input(props: Props) {
@@ -15,7 +15,7 @@ function Input(props: Props) {
   const inputClasses = classNames(className, "gc-input");
   const fieldClasses = classNames("gc-input__field", {
     "gc-input__field--success": validation === "success",
-    "gc-input__field--danger": validation === "danger"
+    "gc-input__field--danger": validation === "danger",
   });
   const id = `input-${label}`;
 

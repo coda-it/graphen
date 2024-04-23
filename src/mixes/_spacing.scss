@@ -1,9 +1,25 @@
+.gm-spacing-s {
+  margin: $spacing-small;
+}
+
+.gm-spacing-m {
+  margin: $spacing-medium;
+}
+
 .gm-spacing-l {
   margin: $spacing-large;
 }
 
 .gm-spacing-vl {
   margin: $spacing-very-large;
+}
+
+.gm-spacing-rs {
+  margin-right: $spacing-small;
+}
+
+.gm-spacing-rm {
+  margin-right: $spacing-medium;
 }
 
 .gm-spacing-rl {
@@ -14,6 +30,14 @@
   margin-right: $spacing-very-large;
 }
 
+.gm-spacing-bs {
+  margin-bottom: $spacing-small;
+}
+
+.gm-spacing-bm {
+  margin-bottom: $spacing-medium;
+}
+
 .gm-spacing-bl {
   margin-bottom: $spacing-large;
 }
@@ -22,12 +46,28 @@
   margin-bottom: $spacing-very-large;
 }
 
+.gm-spacing-ls {
+  margin-left: $spacing-small;
+}
+
+.gm-spacing-lm {
+  margin-left: $spacing-medium;
+}
+
 .gm-spacing-ll {
   margin-left: $spacing-large;
 }
 
 .gm-spacing-lvl {
   margin-left: $spacing-very-large;
+}
+
+.gm-spacing-ts {
+  margin-top: $spacing-small;
+}
+
+.gm-spacing-tm {
+  margin-top: $spacing-medium;
 }
 
 .gm-spacing-tl {

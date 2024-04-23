@@ -17,7 +17,7 @@ import {
   Tooltip,
   Logo,
   Dropdown,
-  constants
+  constants,
 } from "./index";
 
 const appContainer = document.querySelector(".js-example");
@@ -25,26 +25,26 @@ const appContainer = document.querySelector(".js-example");
 type Props = {};
 
 type State = {
-  isDialogVisible: boolean
+  isDialogVisible: boolean,
 };
 
 class ExampleApp extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      isDialogVisible: false
+      isDialogVisible: false,
     };
   }
 
   handleShowDialog() {
     this.setState(() => ({
-      isDialogVisible: true
+      isDialogVisible: true,
     }));
   }
 
   handleHideDialog() {
     this.setState(() => ({
-      isDialogVisible: false
+      isDialogVisible: false,
     }));
   }
 
@@ -618,7 +618,7 @@ class ExampleApp extends React.PureComponent<Props, State> {
               label="Dropdown label"
               items={[
                 { label: "Red", value: "red" },
-                { label: "Blue", value: "blue" }
+                { label: "Blue", value: "blue" },
               ]}
               onChange={_.noop}
             />

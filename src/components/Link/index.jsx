@@ -7,18 +7,18 @@ type Props = {
   link: string,
   className?: string,
   children?: React.DOM,
-  skin?: constants.Skin
+  skin?: constants.Skin,
 };
 
 function Link({
   link,
   className,
   children,
-  skin = constants.SKINS.primary
+  skin = constants.SKINS.primary,
 }: Props) {
   const classes = classNames("gc-link", className, {
     "gc-link--primary": skin === constants.SKINS.primary,
-    "gc-link--default": skin === constants.SKINS.default
+    "gc-link--default": skin === constants.SKINS.default,
   });
 
   return (

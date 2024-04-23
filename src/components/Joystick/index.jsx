@@ -5,12 +5,12 @@ import ReactDOM from "react-dom";
 
 type Props = {
   onPositionChange: (left: number, top: number) => void,
-  isEnabled: boolean
+  isEnabled: boolean,
 };
 
 type State = {
   left: number,
-  top: number
+  top: number,
 };
 
 const JOYSTICK_RADIUS = 50;
@@ -21,14 +21,14 @@ class Joystick extends React.PureComponent<Props, State> {
   }
 
   static defaultProps = {
-    isEnabled: true
+    isEnabled: true,
   };
 
   constructor() {
     super();
     this.state = {
       left: JOYSTICK_RADIUS * 0.5,
-      top: JOYSTICK_RADIUS * 0.5
+      top: JOYSTICK_RADIUS * 0.5,
     };
   }
 
@@ -63,7 +63,7 @@ class Joystick extends React.PureComponent<Props, State> {
     onPositionChange(left, top);
     this.setState({
       left,
-      top
+      top,
     });
   }
 
@@ -74,12 +74,15 @@ class Joystick extends React.PureComponent<Props, State> {
     const classes = `gc-joystick${isEnabled ? "" : " gc-joystick--inactive"}`;
 
     return (
-      <div className={classes} onDragOver={event => Joystick.onDragOver(event)}>
+      <div
+        className={classes}
+        onDragOver={(event) => Joystick.onDragOver(event)}
+      >
         <div
           className="gc-joystick__knob"
           style={{
             left,
-            top
+            top,
           }}
         />
         <div
@@ -93,7 +96,7 @@ class Joystick extends React.PureComponent<Props, State> {
           }}
           style={{
             left,
-            top
+            top,
           }}
         />
       </div>

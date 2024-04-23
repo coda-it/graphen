@@ -6,7 +6,7 @@ type Props = {
   src: string,
   className?: string,
   height?: number,
-  width?: number
+  width?: number,
 };
 
 export default function Image(props: Props) {
