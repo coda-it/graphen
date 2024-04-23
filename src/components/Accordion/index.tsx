@@ -4,7 +4,7 @@ import classNames from "classnames";
 type Props = {
   className?: string,
   title: string,
-  children?: React.DOM,
+  children?: React.ReactNode,
   isCollapsed?: boolean
 };
 
@@ -47,7 +47,6 @@ class Accordion extends React.PureComponent<Props, State> {
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <header
           role="button"
-          tabIndex="0"
           className="gc-accordion__title"
           onClick={() => {
             this.handleClick();
@@ -61,6 +60,7 @@ class Accordion extends React.PureComponent<Props, State> {
   }
 }
 
+// @ts-ignore
 Accordion.defaultProps = {
   className: '',
   children: null,

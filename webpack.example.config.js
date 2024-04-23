@@ -15,7 +15,7 @@ module.exports = {
     filename: '[name].js',
   },
   entry: {
-    example: './example.jsx',
+    example: './example.tsx',
     css: './style.scss',
   },
   module: {
