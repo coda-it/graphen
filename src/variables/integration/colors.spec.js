@@ -3,7 +3,7 @@ describe("Colors", () => {
     cy.visit("http://localhost:3000");
   });
 
-  xit("should make a screenshot", () => {
+  it("should make a screenshot", () => {
     cy.get(".tst-colors").screenshot();
   });
 
