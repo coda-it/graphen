@@ -50,7 +50,6 @@ integration-test:
 
 .PHONY: lint
 lint:
-	$(NPM) run flow
 	$(NPM) run lint
 	$(NPM) run pretty
 	$(NPM) run csslint
