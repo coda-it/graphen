@@ -1,6 +1,6 @@
 describe("Colors", () => {
   before(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit("http://localhost:3000");
   });
 
   xit("should make a screenshot", () => {
