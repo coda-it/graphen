@@ -21,3 +21,7 @@ jobs:
         run: make integration-test
       - name: Build application
         run: make all ENV=prod
+      - name: Publish
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
