@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 import * as constants from "src/variables/constants";
@@ -6,7 +5,7 @@ import * as constants from "src/variables/constants";
 type Props = {
   link: string,
   className?: string,
-  children?: React.DOM,
+  children?: React.ReactNode,
   skin?: constants.Skin,
 };
 
@@ -27,5 +26,12 @@ function Link({
     </a>
   );
 }
+
+// @ts-ignore
+Link.defaultProps = {
+  className: '',
+  children: null,
+  skin: undefined,
+};
 
 export default Link;

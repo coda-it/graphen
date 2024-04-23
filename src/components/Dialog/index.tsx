@@ -1,10 +1,9 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 
 type Props = {
   className?: string,
-  children?: React$Element<any>,
+  children?: React.ReactNode,
 };
 
 function Dialog(props: Props) {
@@ -13,5 +12,11 @@ function Dialog(props: Props) {
 
   return <div className={dialogClasses}>{children}</div>;
 }
+
+// @ts-ignore
+Dialog.defaultProps = {
+  className: '',
+  children: null,
+};
 
 export default Dialog;

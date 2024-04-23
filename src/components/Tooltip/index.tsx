@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 
@@ -17,5 +16,12 @@ function Tooltip(props: Props) {
 
   return <div className={validationClasses}>{children}</div>;
 }
+
+// @ts-ignore
+Tooltip.defaultProps = {
+  className: '',
+  children: null,
+  type: 'success',
+};
 
 export default Tooltip;

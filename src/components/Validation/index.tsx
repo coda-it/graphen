@@ -1,11 +1,10 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 import Tooltip from "../Tooltip";
 
 type Props = {
   className?: string,
-  children?: React$Element<any>,
+  children?: React.ReactNode,
   type?: string,
   message?: string | null,
 };
@@ -27,5 +26,13 @@ function Validation(props: Props) {
     </div>
   );
 }
+
+// @ts-ignore
+Validation.defaultProps = {
+  className: '',
+  children: null,
+  type: 'success',
+  message: null,
+};
 
 export default Validation;

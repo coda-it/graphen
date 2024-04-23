@@ -13,6 +13,12 @@ type State = {
 };
 
 class Accordion extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    className: '',
+    children: null,
+    isCollapsed: true,
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -60,12 +66,5 @@ class Accordion extends React.PureComponent<Props, State> {
     );
   }
 }
-
-// @ts-ignore
-Accordion.defaultProps = {
-  className: '',
-  children: null,
-  isCollapsed: true,
-};
 
 export default Accordion;
