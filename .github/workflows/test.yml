@@ -15,6 +15,8 @@ jobs:
         run: make install
       - name: Lint
         run: make lint
+      - name: Make Example
+        run: make mode=example
       - name: Test
         run: make integration-test
       - name: Build application
