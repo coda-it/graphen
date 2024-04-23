@@ -44,7 +44,7 @@ class Accordion extends React.PureComponent<Props, State> {
 
     return (
       <article className={accordionClasses}>
-        {/* eslint-disable jsx-a11y/no-static-element-interactions */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <header
           role="button"
           tabIndex="0"
@@ -55,11 +55,16 @@ class Accordion extends React.PureComponent<Props, State> {
         >
           {indicator} {title}
         </header>
-        {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div className={contentClasses}>{children}</div>
       </article>
     );
   }
 }
+
+Accordion.defaultProps = {
+  className: '',
+  children: null,
+  isCollapsed: true,
+};
 
 export default Accordion;

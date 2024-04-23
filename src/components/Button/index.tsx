@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 
@@ -14,10 +13,15 @@ function Button(props: Props) {
   const buttonClasses = classNames(className, "gc-btn");
 
   return (
-    <button onClick={onClick} className={buttonClasses}>
+    <button onClick={onClick} className={buttonClasses} type='button'>
       {children}
     </button>
   );
 }
+
+Button.defaultProps = {
+  className: '',
+  onClick: () => {},
+};
 
 export default Button;
