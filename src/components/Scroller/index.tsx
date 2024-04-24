@@ -1,4 +1,3 @@
-// @flow
 import _ from "lodash";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -9,28 +8,28 @@ const BORDER_SIZE = 1;
 type Props = {
   onScrollChange: (value: number) => void,
   min: number,
-  max: number
+  max: number,
 };
 
 type State = {
-  value: number
+  value: number,
 };
 
 class Scroller extends React.PureComponent<Props, State> {
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
     this.state = {
-      value: 0
+      value: 0,
     };
   }
 
-  onMove(event: SyntheticDragEvent<Element>) {
+  onMove(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     this.scroll(event);
     return false;
   }
 
-  onDrop(event: SyntheticDragEvent<Element>) {
+  onDrop(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     const { onScrollChange } = this.props;
     const { value } = this.state;
@@ -39,7 +38,7 @@ class Scroller extends React.PureComponent<Props, State> {
     return false;
   }
 
-  scroll(event: SyntheticDragEvent<Element>) {
+  scroll(event: React.DragEvent<HTMLDivElement>) {
     const { clientX } = event;
     const { min, max } = this.props;
 
@@ -60,11 +59,11 @@ class Scroller extends React.PureComponent<Props, State> {
   move(x: number, vx: number, maxWidth: number) {
     const value = _.min([
       _.max([x, 0]),
-      maxWidth - KNOB_SIZE - 2 * BORDER_SIZE
+      maxWidth - KNOB_SIZE - 2 * BORDER_SIZE,
     ]);
 
     this.setState({
-      value
+      value,
     });
   }
 
@@ -74,28 +73,28 @@ class Scroller extends React.PureComponent<Props, State> {
     return (
       <div
         className="gc-scroller"
-        onDragOver={(event: SyntheticDragEvent<HTMLDivElement>) => {
+        onDragOver={(event: React.DragEvent<HTMLDivElement>) => {
           event.preventDefault();
           return false;
         }}
-        onDrop={(event: SyntheticDragEvent<HTMLDivElement>) => {
+        onDrop={(event: React.DragEvent<HTMLDivElement>) => {
           this.onDrop(event);
         }}
       >
         <div
           className="gc-scroller__knob"
           style={{
-            left: value
+            left: value,
           }}
         />
         <div
           className="gc-scroller__drag"
           draggable="true"
-          onDrag={(event: SyntheticDragEvent<HTMLDivElement>) => {
+          onDrag={(event: React.DragEvent<HTMLDivElement>) => {
             this.onMove(event);
           }}
           style={{
-            left: value
+            left: value,
           }}
         />
       </div>

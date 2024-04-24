@@ -1,38 +1,33 @@
-// @flow
 import _ from "lodash";
-import React from "react";
+import React from 'react';
 import ReactDOM from "react-dom";
 
 type Props = {
   onPositionChange: (left: number, top: number) => void,
-  isEnabled: boolean
+  isEnabled: boolean,
 };
 
 type State = {
   left: number,
-  top: number
+  top: number,
 };
 
 const JOYSTICK_RADIUS = 50;
 
 class Joystick extends React.PureComponent<Props, State> {
-  static onDragOver(event: SyntheticDragEvent<HTMLDivElement>) {
+  static onDragOver(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
   }
 
-  static defaultProps = {
-    isEnabled: true
-  };
-
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
     this.state = {
       left: JOYSTICK_RADIUS * 0.5,
-      top: JOYSTICK_RADIUS * 0.5
+      top: JOYSTICK_RADIUS * 0.5,
     };
   }
 
-  onMove(event: SyntheticDragEvent<Element>) {
+  onMove(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     const { clientX, clientY } = event;
 
@@ -49,7 +44,7 @@ class Joystick extends React.PureComponent<Props, State> {
     this.move(mappedX, mappedY);
   }
 
-  onDragEnd(event: SyntheticDragEvent<Element>) {
+  onDragEnd(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     this.move(JOYSTICK_RADIUS * 0.5, JOYSTICK_RADIUS * 0.5);
   }
@@ -63,7 +58,7 @@ class Joystick extends React.PureComponent<Props, State> {
     onPositionChange(left, top);
     this.setState({
       left,
-      top
+      top,
     });
   }
 
@@ -74,26 +69,29 @@ class Joystick extends React.PureComponent<Props, State> {
     const classes = `gc-joystick${isEnabled ? "" : " gc-joystick--inactive"}`;
 
     return (
-      <div className={classes} onDragOver={event => Joystick.onDragOver(event)}>
+      <div
+        className={classes}
+        onDragOver={(event) => Joystick.onDragOver(event)}
+      >
         <div
           className="gc-joystick__knob"
           style={{
             left,
-            top
+            top,
           }}
         />
         <div
           className="gc-joystick__drag"
           draggable={isEnabled}
-          onDrag={(event: SyntheticDragEvent<HTMLDivElement>) => {
+          onDrag={(event: React.DragEvent<HTMLDivElement>) => {
             this.onMove(event);
           }}
-          onDragEnd={(event: SyntheticDragEvent<HTMLDivElement>) => {
+          onDragEnd={(event: React.DragEvent<HTMLDivElement>) => {
             this.onDragEnd(event);
           }}
           style={{
             left,
-            top
+            top,
           }}
         />
       </div>

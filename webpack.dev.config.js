@@ -15,15 +15,15 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   entry: {
-    scripts: './index.js',
+    scripts: './index.ts',
     css: './style.scss',
   },
   module: {
     rules: [{
-      test: /\.jsx?$/,
+      test: /\.(j|t)sx?$/,
       exclude: /node_modules/,
       resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
       use: {
         loader: 'babel-loader',

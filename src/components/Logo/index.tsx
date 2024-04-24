@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 type Props = {
   className?: string,
-  onClick?: () => void
+  onClick?: () => void,
 };
 
 function Logo(props: Props) {
@@ -20,5 +20,11 @@ function Logo(props: Props) {
   );
   /* eslint-enable jsx-a11y/no-static-element-interactions */
 }
+
+// @ts-ignore
+Logo.defaultProps = {
+  className: '',
+  onClick: () => {},
+};
 
 export default Logo;

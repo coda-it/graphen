@@ -1,11 +1,10 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 
 type Props = {
   className?: string,
   title: string,
-  children?: React.DOM,
+  children?: React.ReactNode,
   isCollapsed?: boolean
 };
 
@@ -14,6 +13,12 @@ type State = {
 };
 
 class Accordion extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    className: '',
+    children: null,
+    isCollapsed: true,
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -45,10 +50,9 @@ class Accordion extends React.PureComponent<Props, State> {
 
     return (
       <article className={accordionClasses}>
-        {/* eslint-disable jsx-a11y/no-static-element-interactions */}
+        {/* eslint-disable */}
         <header
           role="button"
-          tabIndex="0"
           className="gc-accordion__title"
           onClick={() => {
             this.handleClick();
@@ -56,7 +60,7 @@ class Accordion extends React.PureComponent<Props, State> {
         >
           {indicator} {title}
         </header>
-        {/* eslint-enable jsx-a11y/no-static-element-interactions */}
+        {/* eslint-enable */}
         <div className={contentClasses}>{children}</div>
       </article>
     );

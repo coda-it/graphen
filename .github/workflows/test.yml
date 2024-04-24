@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.ref }}
+      - name: Install dependencies
+        run: make install
+      - name: Lint
+        run: make lint
+      - name: Make Example
+        run: make mode=example
+      - name: Test
+        run: make integration-test
+      - name: Build application
+        run: make all ENV=prod

@@ -1,27 +1,26 @@
-// @flow
 import React, { useState, useCallback } from "react";
 import * as _ from "lodash";
 import classNames from "classnames";
 
 type Props = {
-  initValue: $ReadOnly<{ value: string, label: string }>,
+  initValue: Readonly<{ value: string, label: string }>,
   label: string,
-  items: $ReadOnlyArray<{ value: string, label: string }>,
-  onChange: string => void
+  items: ReadonlyArray<{ value: string, label: string }>,
+  onChange: (arg0: string) => void,
 };
 
-export default function Dropdown(props: Props) {
+function Dropdown(props: Props) {
   const { initValue, label, items, onChange } = props;
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(initValue);
   const expandMenu = useCallback(() => {
-    setIsExpanded(isShown => !isShown);
+    setIsExpanded((isShown) => !isShown);
   }, [setIsExpanded]);
   const selectItem = useCallback(
-    item => {
+    (item) => {
       onChange(item.value);
       setIsExpanded(false);
-      setSelectedItem(_.find(items, i => i.value === item.value));
+      setSelectedItem(_.find(items, (i) => i.value === item.value));
     },
     [setIsExpanded, setSelectedItem, items]
   );
@@ -33,6 +32,7 @@ export default function Dropdown(props: Props) {
       </label>
       <div className="gc-dropdown__menu">
         <button
+          type="button"
           className="gc-dropdown__btn"
           data-cy="dropdown-button"
           onClick={expandMenu}
@@ -43,11 +43,12 @@ export default function Dropdown(props: Props) {
           <div className="gc-dropdown__content">
             <ul className="gc-dropdown__list">
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-              {_.map(items, item => {
+              {_.map(items, (item) => {
                 const dropdownItemClasses = classNames("gc-dropdown__item", {
-                  "gc-dropdown__item--first": item === items[0]
+                  "gc-dropdown__item--first": item === items[0],
                 });
                 return (
+                  /* eslint-disable react/button-has-type */
                   <li
                     data-cy="dropdown-item"
                     className={dropdownItemClasses}
@@ -56,6 +57,7 @@ export default function Dropdown(props: Props) {
                   >
                     <a className="gc-dropdown__link">{item.label}</a>
                   </li>
+                  /* eslint-enable react/button-has-type */
                 );
               })}
               {/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -66,3 +68,5 @@ export default function Dropdown(props: Props) {
     </div>
   );
 }
+
+export default Dropdown;

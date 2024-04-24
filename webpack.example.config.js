@@ -15,15 +15,15 @@ module.exports = {
     filename: '[name].js',
   },
   entry: {
-    example: './example.jsx',
+    example: './example.tsx',
     css: './style.scss',
   },
   module: {
     rules: [{
-      test: /\.jsx?$/,
+      test: /\.(j|t)sx?$/,
       exclude: /node_modules/,
       resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
       use: {
         loader: 'babel-loader',

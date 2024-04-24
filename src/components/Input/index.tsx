@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 
@@ -7,7 +6,7 @@ type Props = {
   type?: string,
   label: string,
   validation?: string,
-  onChange?: Event => void
+  onChange?: React.ChangeEventHandler<HTMLInputElement>,
 };
 
 function Input(props: Props) {
@@ -15,7 +14,7 @@ function Input(props: Props) {
   const inputClasses = classNames(className, "gc-input");
   const fieldClasses = classNames("gc-input__field", {
     "gc-input__field--success": validation === "success",
-    "gc-input__field--danger": validation === "danger"
+    "gc-input__field--danger": validation === "danger",
   });
   const id = `input-${label}`;
 
@@ -28,5 +27,13 @@ function Input(props: Props) {
     </div>
   );
 }
+
+// @ts-ignore
+Input.defaultProps = {
+  className: '',
+  type: '',
+  validation: undefined,
+  onChange: () => {},
+};
 
 export default Input;

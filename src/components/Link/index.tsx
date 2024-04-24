@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import classNames from "classnames";
 import * as constants from "src/variables/constants";
@@ -6,19 +5,19 @@ import * as constants from "src/variables/constants";
 type Props = {
   link: string,
   className?: string,
-  children?: React.DOM,
-  skin?: constants.Skin
+  children?: React.ReactNode,
+  skin?: constants.Skin,
 };
 
 function Link({
   link,
   className,
   children,
-  skin = constants.SKINS.primary
+  skin = constants.SKINS.primary,
 }: Props) {
   const classes = classNames("gc-link", className, {
     "gc-link--primary": skin === constants.SKINS.primary,
-    "gc-link--default": skin === constants.SKINS.default
+    "gc-link--default": skin === constants.SKINS.default,
   });
 
   return (
@@ -27,5 +26,12 @@ function Link({
     </a>
   );
 }
+
+// @ts-ignore
+Link.defaultProps = {
+  className: '',
+  children: null,
+  skin: undefined,
+};
 
 export default Link;
