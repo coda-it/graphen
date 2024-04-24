@@ -21,13 +21,3 @@ jobs:
         run: make integration-test
       - name: Build application
         run: make all ENV=prod
-      - name: Set up nodejs
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-          always-auth: true
-      - name: Publish
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
