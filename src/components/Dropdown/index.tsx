@@ -24,6 +24,7 @@ function Dropdown(props: Props) {
     },
     [setIsExpanded, setSelectedItem, items]
   );
+  const buttonClasses = `gc-dropdown__btn ${label ? 'gc-dropdown__btn--with-label' : ''}`;
 
   return (
     <div className="gc-dropdown">
@@ -33,7 +34,7 @@ function Dropdown(props: Props) {
       <div className="gc-dropdown__menu">
         <button
           type="button"
-          className="gc-dropdown__btn"
+          className={buttonClasses}
           data-cy="dropdown-button"
           onClick={expandMenu}
         >
