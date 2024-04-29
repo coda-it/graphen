@@ -613,15 +613,27 @@ class ExampleApp extends React.PureComponent<Props, State> {
         <article className="gc-panel gc-panel--separator">
           <header className="gc-panel__title">Dropdown Menu</header>
           <div className="gc-panel__content">
-            <Dropdown
-              initValue={{ label: "-Select Value-", value: "selectValue" }}
-              label="Dropdown label"
-              items={[
-                { label: "Red", value: "red" },
-                { label: "Blue", value: "blue" },
-              ]}
-              onChange={_.noop}
-            />
+            <p>
+              <Dropdown
+                initValue={{ label: "-Select Value-", value: "selectValue" }}
+                label="Dropdown label"
+                items={[
+                  { label: "Red", value: "red" },
+                  { label: "Blue", value: "blue" },
+                ]}
+                onChange={_.noop}
+              />
+            </p>
+            <p>
+              <Dropdown
+                initValue={{ label: "-Select Value-", value: "selectValue" }}
+                items={[
+                  { label: "Red", value: "red" },
+                  { label: "Blue", value: "blue" },
+                ]}
+                onChange={_.noop}
+              />
+            </p>
           </div>
         </article>
       </>
