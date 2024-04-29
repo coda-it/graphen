@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 type Props = {
   initValue: Readonly<{ value: string, label: string }>,
-  label: string,
+  label?: string,
   items: ReadonlyArray<{ value: string, label: string }>,
   onChange: (arg0: string) => void,
 };
@@ -27,9 +27,9 @@ function Dropdown(props: Props) {
 
   return (
     <div className="gc-dropdown">
-      <label className="gc-dropdown__label" htmlFor="gc-dropdown__label">
+      {label && (<label className="gc-dropdown__label" htmlFor="gc-dropdown__label">
         {label}
-      </label>
+      </label>)}
       <div className="gc-dropdown__menu">
         <button
           type="button"
@@ -68,5 +68,10 @@ function Dropdown(props: Props) {
     </div>
   );
 }
+
+// @ts-ignore
+Dropdown.defaultProps = {
+  label: undefined,
+};
 
 export default Dropdown;
