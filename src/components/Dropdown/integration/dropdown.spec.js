@@ -15,6 +15,6 @@ describe("dropdown menu", () => {
       .contains("Blue")
       .click()
       .get("[data-cy=dropdown-button]")
-      .should("contain", "Blue"); 
+      .should("contain", "Blue");
   });
 });
