@@ -16,13 +16,16 @@
     font-size: inherit;
     padding: $spacing-large;
     width: 250px;
-    margin-top: 5px;
     margin-bottom: 0;
     position: relative;
     background-color: $color-white;
     color: $gb-color-text;
     border: 1px solid $color-silver;
     border-radius: $radius-medium;
+
+    &--with-label {
+      margin-top: 5px;
+    }
 
     &:hover {
       cursor: pointer;
