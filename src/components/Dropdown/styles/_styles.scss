@@ -11,13 +11,9 @@
   }
 
   &__btn {
+    @include cx-btn--size(34px);
+
     display: block;
-    text-align: left;
-    font-size: inherit;
-    padding: $spacing-large;
-    width: 250px;
-    margin-bottom: 0;
-    position: relative;
     background-color: $color-white;
     color: $gb-color-text;
     border: 1px solid $color-silver;
@@ -33,7 +29,7 @@
   }
 
   &__content {
-    position: relative;
+    position: absolute;
     display: block;
     margin-top: $spacing-large;
     margin-left: 0;
@@ -46,6 +42,7 @@
     border-radius: $radius-medium;
     border: 1px solid $color-silver;
     box-sizing: border-box;
+    z-index: 99;
   }
 
   &__list {
