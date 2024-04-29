@@ -1,7 +1,7 @@
 describe("dropdown menu", () => {
   it("should open dropdown and pick a value", () => {
     cy.visit("localhost:3000");
-    cy.get("[data-cy=dropdown-button]")
+    cy.get("[data-cy=dropdown-button]")[0]
       .click()
       .get("[data-cy=dropdown-item]")
       .contains("Red")
@@ -9,7 +9,7 @@ describe("dropdown menu", () => {
       .get("[data-cy=dropdown-button]")
       .should("contain", "Red");
 
-    cy.get("[data-cy=dropdown-button]")
+    cy.get("[data-cy=dropdown-button]")[0]
       .click()
       .get("[data-cy=dropdown-item]")
       .contains("Blue")
