@@ -615,7 +615,7 @@ class ExampleApp extends React.PureComponent<Props, State> {
           <div className="gc-panel__content">
             <p>
               <Dropdown
-                initValue={{ label: "-Select Value-", value: "selectValue" }}
+                initValue={{ label: "Select value", value: "selectValue" }}
                 label="Dropdown label"
                 items={[
                   { label: "Red", value: "red" },
@@ -626,7 +626,7 @@ class ExampleApp extends React.PureComponent<Props, State> {
             </p>
             <p>
               <Dropdown
-                initValue={{ label: "-Select Value-", value: "selectValue" }}
+                initValue={{ label: "Select value", value: "selectValue" }}
                 items={[
                   { label: "Red", value: "red" },
                   { label: "Blue", value: "blue" },

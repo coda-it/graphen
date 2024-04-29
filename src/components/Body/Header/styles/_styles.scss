@@ -21,5 +21,6 @@ $gc-header-height: 53px !default;
   &__navigation {
     flex-basis: 90%;
     flex-grow: 9;
+    overflow-x: scroll;
   }
 }
