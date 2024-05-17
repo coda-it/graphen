@@ -1,6 +1,4 @@
-export const SKINS = {
-  primary: "primary",
-  default: "default",
-};
+export const SKIN_DEFAULT = "default";
+export const SKIN_PRIMARY = "primary";
 
-export type Skin = keyof typeof SKINS;
+export type Skin = typeof SKIN_DEFAULT | typeof SKIN_PRIMARY;
