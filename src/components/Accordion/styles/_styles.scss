@@ -1,6 +1,5 @@
 .gc-accordion {
   @extend .gc-panel;
-  @extend .gc-panel--separator;
 
   &__title {
     @extend .gc-panel__title;

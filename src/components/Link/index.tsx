@@ -3,10 +3,10 @@ import classNames from "classnames";
 import * as constants from "src/variables/constants";
 
 type Props = {
-  link: string,
-  className?: string,
-  children?: React.ReactNode,
-  skin?: constants.Skin,
+  link: string;
+  className?: string;
+  children?: React.ReactNode;
+  skin?: constants.Skin;
 };
 
 function Link({
