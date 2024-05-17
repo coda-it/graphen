@@ -125,7 +125,7 @@ class ExampleApp extends React.PureComponent<Props, State> {
           <header className="gc-panel__title">Link</header>
           <div className="gc-panel__content">
             <Link link="http://some-url">Primary Link</Link> ,{" "}
-            <Link link="http://some-url" skin={constants.SKINS.default}>
+            <Link link="http://some-url" skin={constants.SKIN_DEFAULT}>
               Default Link
             </Link>
           </div>
