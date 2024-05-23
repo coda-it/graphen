@@ -62,8 +62,13 @@
       border-top: none;
     }
 
+    &--selected {
+      background-color: $colour-gallery;
+    }
+
     &:hover {
       cursor: pointer;
+      background-color: $color-michka;
     }
   }
 
