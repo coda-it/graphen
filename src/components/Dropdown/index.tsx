@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from "react";
-import * as _ from "lodash";
+import React, { useState, useCallback, useEffect } from "react";
 import classNames from "classnames";
 
 type Props = {
@@ -11,20 +10,30 @@ type Props = {
 
 function Dropdown(props: Props) {
   const { initValue, label, items, onChange } = props;
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(initValue);
+
+  useEffect(() => {
+    setSelectedItem(initValue);
+  }, [initValue, setSelectedItem]);
+
   const expandMenu = useCallback(() => {
     setIsExpanded((isShown) => !isShown);
   }, [setIsExpanded]);
+
   const selectItem = useCallback(
     (item) => {
       onChange(item.value);
       setIsExpanded(false);
-      setSelectedItem(_.find(items, (i) => i.value === item.value));
+      setSelectedItem(items.find((i) => i.value === item.value));
     },
     [setIsExpanded, setSelectedItem, items]
   );
-  const buttonClasses = `gc-dropdown__btn ${label ? 'gc-dropdown__btn--with-label' : ''}`;
+
+  const buttonClasses = classNames('gc-dropdown__btn', {
+    'gc-dropdown__btn--with-label': label,
+  });
 
   return (
     <div className="gc-dropdown">
@@ -44,10 +53,12 @@ function Dropdown(props: Props) {
           <div className="gc-dropdown__content">
             <ul className="gc-dropdown__list">
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-              {_.map(items, (item) => {
+              {items.map((item, index) => {
                 const dropdownItemClasses = classNames("gc-dropdown__item", {
-                  "gc-dropdown__item--first": item === items[0],
+                  "gc-dropdown__item--first": index === 0,
+                  "gc-dropdown__item--selected": item.value === selectedItem.value,
                 });
+
                 return (
                   /* eslint-disable react/button-has-type */
                   <li
