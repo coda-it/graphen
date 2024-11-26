@@ -24,8 +24,10 @@ function Dropdown(props: Props) {
       setIsExpanded(true);
     }
   }, [setIsExpanded, isDisabled]);
-  const closeMenu = useCallback(() => {
-    setIsExpanded(false);
+  const closeMenu = useCallback((event) => {
+    if (!event.relatedTarget) {
+      setIsExpanded(false);
+    }
   }, [setIsExpanded]);
 
   const selectItem = useCallback(
@@ -57,7 +59,8 @@ function Dropdown(props: Props) {
           {selectedItem.label}
         </button>
         {isExpanded && (
-          <div className="gc-dropdown__content">
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          <div className="gc-dropdown__content" tabIndex={0}>
             <ul className="gc-dropdown__list">
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {items.map((item, index) => {
