@@ -19,6 +19,10 @@
     border: 1px solid $color-silver;
     border-radius: $radius-medium;
 
+    &--disabled {
+      border: 0;
+    }
+
     &--with-label {
       margin-top: 5px;
     }
