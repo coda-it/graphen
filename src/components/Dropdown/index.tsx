@@ -2,14 +2,15 @@ import React, { useState, useCallback, useEffect } from "react";
 import classNames from "classnames";
 
 type Props = {
-  initValue: Readonly<{ value: string, label: string }>,
-  label?: string,
-  items: ReadonlyArray<{ value: string, label: string }>,
-  onChange: (arg0: string) => void,
+  initValue: Readonly<{ value: string, label: string }>;
+  label?: string;
+  items: ReadonlyArray<{ value: string, label: string }>;
+  onChange: (arg0: string) => void;
+  isDisabled?: boolean;
 };
 
 function Dropdown(props: Props) {
-  const { initValue, label, items, onChange } = props;
+  const { initValue, label, items, onChange, isDisabled } = props;
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(initValue);
@@ -19,7 +20,14 @@ function Dropdown(props: Props) {
   }, [initValue, setSelectedItem]);
 
   const expandMenu = useCallback(() => {
-    setIsExpanded((isShown) => !isShown);
+    if (!isDisabled) {
+      setIsExpanded(true);
+    }
+  }, [setIsExpanded, isDisabled]);
+  const closeMenu = useCallback((event) => {
+    if (!event.relatedTarget) {
+      setIsExpanded(false);
+    }
   }, [setIsExpanded]);
 
   const selectItem = useCallback(
@@ -33,10 +41,11 @@ function Dropdown(props: Props) {
 
   const buttonClasses = classNames('gc-dropdown__btn', {
     'gc-dropdown__btn--with-label': label,
+    'gc-dropdown__btn--disabled': isDisabled,
   });
 
   return (
-    <div className="gc-dropdown">
+    <div className="gc-dropdown" onBlur={closeMenu}>
       {label && (<label className="gc-dropdown__label" htmlFor="gc-dropdown__label">
         {label}
       </label>)}
@@ -50,7 +59,8 @@ function Dropdown(props: Props) {
           {selectedItem.label}
         </button>
         {isExpanded && (
-          <div className="gc-dropdown__content">
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          <div className="gc-dropdown__content" tabIndex={0}>
             <ul className="gc-dropdown__list">
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {items.map((item, index) => {
@@ -84,6 +94,7 @@ function Dropdown(props: Props) {
 // @ts-ignore
 Dropdown.defaultProps = {
   label: undefined,
+  isDisabled: false,
 };
 
 export default Dropdown;

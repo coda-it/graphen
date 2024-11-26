@@ -627,11 +627,13 @@ class ExampleApp extends React.PureComponent<Props, State> {
             <p>
               <Dropdown
                 initValue={{ label: "Select value", value: "selectValue" }}
+                label="Disabled dropdown"
                 items={[
                   { label: "Red", value: "red" },
                   { label: "Blue", value: "blue" },
                 ]}
                 onChange={_.noop}
+                isDisabled
               />
             </p>
           </div>
