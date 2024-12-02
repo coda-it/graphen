@@ -17,6 +17,7 @@ import {
   Tooltip,
   Logo,
   Dropdown,
+  Switch,
   constants,
 } from "./index";
 
@@ -340,41 +341,10 @@ class ExampleApp extends React.PureComponent<Props, State> {
           <header className="gc-panel__title">Switches</header>
           <div className="gc-panel__content">
             <p>
-              <label htmlFor="switch-1" className="gc-switch">
-                <input
-                  id="switch-1"
-                  className="gc-switch__input"
-                  type="checkbox"
-                />
-                <span className="gc-switch__slider" />
-              </label>{" "}
-              <label
-                htmlFor="switch-2"
-                className="gc-switch gc-switch--success"
-              >
-                <input
-                  id="switch-2"
-                  className="gc-switch__input"
-                  type="checkbox"
-                />
-                <span className="gc-switch__slider" />
-              </label>{" "}
-              <label htmlFor="switch-3" className="gc-switch gc-switch--info">
-                <input
-                  id="switch-3"
-                  className="gc-switch__input"
-                  type="checkbox"
-                />
-                <span className="gc-switch__slider" />
-              </label>{" "}
-              <label htmlFor="switch-4" className="gc-switch gc-switch--danger">
-                <input
-                  id="switch-4"
-                  className="gc-switch__input"
-                  type="checkbox"
-                />
-                <span className="gc-switch__slider" />
-              </label>
+              <Switch />{" "}
+              <Switch type="success" isSwitched />{" "}
+              <Switch type="info" isSwitched />{" "}
+              <Switch type="danger" isSwitched />
             </p>
           </div>
         </article>
