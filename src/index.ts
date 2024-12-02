@@ -20,6 +20,7 @@ import Panel from "src/components/Panel";
 import PanelContent from "src/components/PanelContent";
 import PanelFooter from "src/components/PanelFooter";
 import PanelTitle from "src/components/PanelTitle";
+import Switch from "src/components/Switch";
 import * as constants from "src/variables/constants";
 
 export {
@@ -45,6 +46,7 @@ export {
   PanelContent,
   PanelFooter,
   PanelTitle,
+  Switch,
   constants
 };
 
