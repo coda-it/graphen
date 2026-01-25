@@ -2,12 +2,12 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  children: React.ReactNode;
-  isVertical: boolean;
-  alignItems: string;
-  alignContent: string;
-  wrap: string;
+  className?: string;
+  children?: React.ReactNode;
+  isVertical?: boolean;
+  alignItems?: string;
+  alignContent?: string;
+  wrap?: string;
 };
 
 function Flex({

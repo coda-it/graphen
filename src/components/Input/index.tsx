@@ -2,11 +2,11 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  type: string;
+  className?: string;
+  type?: string;
   label: string;
-  validation: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  validation?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 function Input({

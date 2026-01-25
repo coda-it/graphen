@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
+  className?: string;
   children: string;
-  onClick: () => void;
-  isFull: boolean;
+  onClick?: () => void;
+  isFull?: boolean;
 };
 
 function Button({

@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 type Props = {
   initValue: Readonly<{ value: string; label: string }>;
-  label: string;
+  label?: string;
   items: ReadonlyArray<{ value: string; label: string }>;
   onChange: (arg0: string) => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 };
 
 function Dropdown({

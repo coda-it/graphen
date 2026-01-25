@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
+  className?: string;
   title: string;
-  children: React.ReactNode;
-  isCollapsed: boolean;
+  children?: React.ReactNode;
+  isCollapsed?: boolean;
 };
 
 function Accordion({

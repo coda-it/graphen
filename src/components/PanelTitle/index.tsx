@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  children: React.ReactNode;
+  className?: string;
+  children?: React.ReactNode;
 };
 
 function PanelTitle({ className = "", children = null }: Props) {

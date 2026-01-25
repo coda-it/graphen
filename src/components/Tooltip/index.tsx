@@ -2,9 +2,9 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  children: string;
-  type: string;
+  className?: string;
+  children?: string;
+  type?: string;
 };
 
 function Tooltip({ className = "", children = null, type = "success" }: Props) {

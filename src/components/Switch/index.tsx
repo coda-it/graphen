@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
 type Props = {
-  isSwitched: boolean;
-  type: "success" | "info" | "danger";
-  onChange: (arg0: boolean) => void;
+  isSwitched?: boolean;
+  type?: "success" | "info" | "danger";
+  onChange?: (arg0: boolean) => void;
 };
 
 function Switch({

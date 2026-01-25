@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  children: React.ReactNode;
-  skin: string;
-  isGradient: boolean;
+  className?: string;
+  children?: React.ReactNode;
+  skin?: string;
+  isGradient?: boolean;
 };
 
 function Card({

@@ -2,10 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  children: React.ReactNode;
-  isSeparator: boolean;
-  isBordered: boolean;
+  className?: string;
+  children?: React.ReactNode;
+  isSeparator?: boolean;
+  isBordered?: boolean;
 };
 
 function Panel({

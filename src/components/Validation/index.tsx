@@ -3,10 +3,10 @@ import classNames from "classnames";
 import Tooltip from "../Tooltip";
 
 type Props = {
-  className: string;
-  children: React.ReactNode;
-  type: string;
-  message: string | null;
+  className?: string;
+  children?: React.ReactNode;
+  type?: string;
+  message?: string | null;
 };
 
 function Validation({

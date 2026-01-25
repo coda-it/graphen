@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className: string;
-  onClick: () => void;
+  className?: string;
+  onClick?: () => void;
 };
 
 function Logo({ className = "", onClick = () => {} }: Props) {

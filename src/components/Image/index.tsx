@@ -3,9 +3,9 @@ import classNames from "classnames";
 
 type Props = {
   src: string;
-  className: string;
-  height: number;
-  width: number;
+  className?: string;
+  height?: number;
+  width?: number;
 };
 
 function Image({ className = "", height = 200, width = 200, src }: Props) {
