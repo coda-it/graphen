@@ -6,13 +6,13 @@ const KNOB_SIZE = 12;
 const BORDER_SIZE = 1;
 
 type Props = {
-  onScrollChange: (value: number) => void,
-  min: number,
-  max: number,
+  onScrollChange: (value: number) => void;
+  min: number;
+  max: number;
 };
 
 type State = {
-  value: number,
+  value: number;
 };
 
 class Scroller extends React.PureComponent<Props, State> {

@@ -2,16 +2,20 @@ import React, { useState, useCallback, useEffect } from "react";
 import classNames from "classnames";
 
 type Props = {
-  initValue: Readonly<{ value: string, label: string }>;
-  label?: string;
-  items: ReadonlyArray<{ value: string, label: string }>;
+  initValue: Readonly<{ value: string; label: string }>;
+  label: string;
+  items: ReadonlyArray<{ value: string; label: string }>;
   onChange: (arg0: string) => void;
-  isDisabled?: boolean;
+  isDisabled: boolean;
 };
 
-function Dropdown(props: Props) {
-  const { initValue, label, items, onChange, isDisabled } = props;
-
+function Dropdown({
+  initValue,
+  items,
+  onChange,
+  label = undefined,
+  isDisabled = false,
+}: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(initValue);
 
@@ -24,11 +28,14 @@ function Dropdown(props: Props) {
       setIsExpanded(true);
     }
   }, [setIsExpanded, isDisabled]);
-  const closeMenu = useCallback((event) => {
-    if (!event.relatedTarget) {
-      setIsExpanded(false);
-    }
-  }, [setIsExpanded]);
+  const closeMenu = useCallback(
+    (event) => {
+      if (!event.relatedTarget) {
+        setIsExpanded(false);
+      }
+    },
+    [setIsExpanded]
+  );
 
   const selectItem = useCallback(
     (item) => {
@@ -39,16 +46,18 @@ function Dropdown(props: Props) {
     [setIsExpanded, setSelectedItem, items]
   );
 
-  const buttonClasses = classNames('gc-dropdown__btn', {
-    'gc-dropdown__btn--with-label': label,
-    'gc-dropdown__btn--disabled': isDisabled,
+  const buttonClasses = classNames("gc-dropdown__btn", {
+    "gc-dropdown__btn--with-label": label,
+    "gc-dropdown__btn--disabled": isDisabled,
   });
 
   return (
     <div className="gc-dropdown" onBlur={closeMenu}>
-      {label && (<label className="gc-dropdown__label" htmlFor="gc-dropdown__label">
-        {label}
-      </label>)}
+      {label && (
+        <label className="gc-dropdown__label" htmlFor="gc-dropdown__label">
+          {label}
+        </label>
+      )}
       <div className="gc-dropdown__menu">
         <button
           type="button"
@@ -66,7 +75,8 @@ function Dropdown(props: Props) {
               {items.map((item, index) => {
                 const dropdownItemClasses = classNames("gc-dropdown__item", {
                   "gc-dropdown__item--first": index === 0,
-                  "gc-dropdown__item--selected": item.value === selectedItem.value,
+                  "gc-dropdown__item--selected":
+                    item.value === selectedItem.value,
                 });
 
                 return (
@@ -90,11 +100,5 @@ function Dropdown(props: Props) {
     </div>
   );
 }
-
-// @ts-ignore
-Dropdown.defaultProps = {
-  label: undefined,
-  isDisabled: false,
-};
 
 export default Dropdown;

@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
 type Props = {
-  isSwitched?: boolean;
-  type?: "success" | "info" | "danger";
-  onChange?: (arg0: boolean) => void;
+  isSwitched: boolean;
+  type: "success" | "info" | "danger";
+  onChange: (arg0: boolean) => void;
 };
 
-function Switch(props: Props) {
-  const { onChange, type, isSwitched } = props;
+function Switch({
+  isSwitched = false,
+  type = undefined,
+  onChange = () => {},
+}: Props) {
   const [isChecked, setIsChecked] = useState(isSwitched);
 
   useEffect(() => {
@@ -16,9 +19,9 @@ function Switch(props: Props) {
   }, [isSwitched]);
 
   const switchClasses = classNames("gc-switch", {
-    'gc-switch--success': type === "success",
-    'gc-switch--info': type === "info",
-    'gc-switch--danger': type === "danger",
+    "gc-switch--success": type === "success",
+    "gc-switch--info": type === "info",
+    "gc-switch--danger": type === "danger",
   });
 
   return (
@@ -38,12 +41,5 @@ function Switch(props: Props) {
     </label>
   );
 }
-
-// @ts-ignore
-Switch.defaultProps = {
-  isSwitched: false,
-  type: undefined,
-  onChange: () => {},
-};
 
 export default Switch;

@@ -9,4 +9,16 @@
   left: 50%;
   transform: translate(-50%, -50%) !important;
   box-shadow: $gc-shadow-default;
+
+  &__overlay {
+    z-index: $zlayer-middle;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+  }
 }

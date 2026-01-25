@@ -3,8 +3,8 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  type: string,
-  className: string,
+  type: string;
+  className: string;
 };
 
 const Icon = (props: Props) => {

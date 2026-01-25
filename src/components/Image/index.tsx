@@ -2,14 +2,13 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  src: string,
-  className?: string,
-  height?: number,
-  width?: number,
+  src: string;
+  className: string;
+  height: number;
+  width: number;
 };
 
-function Image(props: Props) {
-  const { src, height, width, className } = props;
+function Image({ className = "", height = 200, width = 200, src }: Props) {
   const classes = classNames("gc-image", className);
 
   return (
@@ -23,13 +22,5 @@ function Image(props: Props) {
     </object>
   );
 }
-
-// @ts-ignore
-Image.defaultProps = {
-  className: '',
-  height: 200,
-  width: 200,
-};
-
 
 export default Image;

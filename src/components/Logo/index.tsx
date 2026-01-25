@@ -2,13 +2,11 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className?: string,
-  onClick?: () => void,
+  className: string;
+  onClick: () => void;
 };
 
-function Logo(props: Props) {
-  const { onClick, className } = props;
-
+function Logo({ className = "", onClick = () => {} }: Props) {
   const logoClasses = classNames(className, "gc-logo");
 
   /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -19,11 +17,5 @@ function Logo(props: Props) {
   );
   /* eslint-enable jsx-a11y/no-static-element-interactions */
 }
-
-// @ts-ignore
-Logo.defaultProps = {
-  className: '',
-  onClick: () => {},
-};
 
 export default Logo;
