@@ -2,13 +2,12 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className?: string,
-  children?: string,
-  type?: string,
+  className?: string;
+  children?: string;
+  type?: string;
 };
 
-function Tooltip(props: Props) {
-  const { children, className, type } = props;
+function Tooltip({ className = "", children = null, type = "success" }: Props) {
   const validationClasses = classNames(className, "gc-tooltip", {
     "gc-tooltip--success": type === "success",
     "gc-tooltip--danger": type === "danger",
@@ -16,12 +15,5 @@ function Tooltip(props: Props) {
 
   return <div className={validationClasses}>{children}</div>;
 }
-
-// @ts-ignore
-Tooltip.defaultProps = {
-  className: '',
-  children: null,
-  type: 'success',
-};
 
 export default Tooltip;

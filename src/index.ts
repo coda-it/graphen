@@ -47,7 +47,5 @@ export {
   PanelFooter,
   PanelTitle,
   Switch,
-  constants
+  constants,
 };
-
-

@@ -8,24 +8,21 @@ type Props = {
   isFull?: boolean;
 };
 
-function Button(props: Props) {
-  const { onClick, children, className, isFull } = props;
-
+function Button({
+  className = "",
+  onClick = () => {},
+  isFull = false,
+  children,
+}: Props) {
   const buttonClasses = classNames(className, "gc-btn", {
     "gc-btn--full": isFull,
   });
 
   return (
-    <button onClick={onClick} className={buttonClasses} type='button'>
+    <button onClick={onClick} className={buttonClasses} type="button">
       {children}
     </button>
   );
 }
-
-Button.defaultProps = {
-  className: '',
-  onClick: () => {},
-  isFull: false,
-};
 
 export default Button;

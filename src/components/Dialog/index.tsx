@@ -2,21 +2,20 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className?: string,
-  children?: React.ReactNode,
+  className?: string;
+  children?: React.ReactNode;
+  isOverlay?: boolean;
 };
 
-function Dialog(props: Props) {
-  const { children, className } = props;
+function Dialog({ className = "", children = null, isOverlay = false }: Props) {
   const dialogClasses = classNames(className, "gc-dialog");
 
-  return <div className={dialogClasses}>{children}</div>;
+  return (
+    <>
+      <div className={dialogClasses}>{children}</div>
+      {isOverlay && <div className="gc-dialog__overlay" />}
+    </>
+  );
 }
-
-// @ts-ignore
-Dialog.defaultProps = {
-  className: '',
-  children: null,
-};
 
 export default Dialog;

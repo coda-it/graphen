@@ -10,10 +10,10 @@ type Props = {
 };
 
 function Link({
+  className = "",
+  children = null,
+  skin = constants.SKIN_DEFAULT,
   link,
-  className,
-  children,
-  skin,
 }: Props) {
   const classes = classNames("gc-link", className, {
     "gc-link--primary": skin === constants.SKIN_PRIMARY,
@@ -26,12 +26,5 @@ function Link({
     </a>
   );
 }
-
-// @ts-ignore
-Link.defaultProps = {
-  className: '',
-  children: null,
-  skin: constants.SKIN_DEFAULT,
-};
 
 export default Link;

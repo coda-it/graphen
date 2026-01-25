@@ -2,15 +2,20 @@ import React from "react";
 import classNames from "classnames";
 
 type Props = {
-  className?: string,
-  type?: string,
-  label: string,
-  validation?: string,
-  onChange?: React.ChangeEventHandler<HTMLInputElement>,
+  className?: string;
+  type?: string;
+  label: string;
+  validation?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-function Input(props: Props) {
-  const { type, label, className, validation, onChange } = props;
+function Input({
+  className = "",
+  type = "",
+  label,
+  validation = undefined,
+  onChange = () => {},
+}: Props) {
   const inputClasses = classNames(className, "gc-input");
   const fieldClasses = classNames("gc-input__field", {
     "gc-input__field--success": validation === "success",
@@ -27,13 +32,5 @@ function Input(props: Props) {
     </div>
   );
 }
-
-// @ts-ignore
-Input.defaultProps = {
-  className: '',
-  type: '',
-  validation: undefined,
-  onChange: () => {},
-};
 
 export default Input;

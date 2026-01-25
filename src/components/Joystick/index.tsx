@@ -1,15 +1,15 @@
 import _ from "lodash";
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom";
 
 type Props = {
-  onPositionChange: (left: number, top: number) => void,
-  isEnabled: boolean,
+  onPositionChange: (left: number, top: number) => void;
+  isEnabled: boolean;
 };
 
 type State = {
-  left: number,
-  top: number,
+  left: number;
+  top: number;
 };
 
 const JOYSTICK_RADIUS = 50;
