@@ -7,6 +7,7 @@ type Props = {
   label: string;
   validation?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  value?: string;
 };
 
 function Input({
@@ -15,6 +16,7 @@ function Input({
   label,
   validation = undefined,
   onChange = () => {},
+  value,
 }: Props) {
   const inputClasses = classNames(className, "gc-input");
   const fieldClasses = classNames("gc-input__field", {
@@ -23,12 +25,22 @@ function Input({
   });
   const id = `input-${label}`;
 
+  const props = {
+    className: fieldClasses,
+    type,
+    label,
+    validation,
+    onChange,
+    value,
+  };
+
   return (
     <div className={inputClasses}>
       <label htmlFor={id} className="gc-input__label">
         {label}
       </label>
-      <input id={id} type={type} className={fieldClasses} onChange={onChange} />
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <input {...props} />
     </div>
   );
 }
