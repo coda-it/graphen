@@ -10,6 +10,7 @@ import {
   Image,
   Link,
   Loader,
+  Card,
   Scroller,
   Joystick,
   Accordion,
@@ -37,6 +38,13 @@ function ExampleApp() {
 
   return (
     <>
+      <Panel>
+        <PanelContent>
+          <Card className="example__splash">
+            <div className="example__splash-image" />
+          </Card>
+        </PanelContent>
+      </Panel>
       <article className="tst-colors gc-panel gc-panel--separator">
         <header className="gc-panel__title">Colors</header>
         <div className="gc-panel__content">
