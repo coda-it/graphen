@@ -9,14 +9,12 @@ all:
 .PHONY: example
 example:
 	$(NPM) run build:example
-	cp dist/styles.css public/
-	cp dist/example.js public/
+	cp dist/* public/
 
 .PHONY: ghpages
 ghpages:
 	$(MAKE) mode=example
-	cp dist/styles.css docs/stylesheets/
-	cp dist/example.js docs/scripts/
+	cp dist/* docs/public/
 	cd docs && jekyll build
 
 .PHONY: version
