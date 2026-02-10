@@ -24,6 +24,7 @@ import {
   PanelFooter,
   PanelContent,
   PanelTitle,
+  Skeleton,
   constants,
 } from "./index";
 
@@ -616,6 +617,20 @@ function ExampleApp() {
               onChange={_.noop}
               isDisabled
             />
+          </p>
+        </div>
+      </article>
+      <article className="gc-panel gc-panel--separator">
+        <header className="gc-panel__title">Skeleton</header>
+        <div className="gc-panel__content">
+          <p>
+            <Skeleton />
+          </p>
+          <p>
+            <Skeleton />
+          </p>
+          <p>
+            <Skeleton />
           </p>
         </div>
       </article>

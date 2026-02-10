@@ -21,6 +21,7 @@ import PanelContent from "src/components/PanelContent";
 import PanelFooter from "src/components/PanelFooter";
 import PanelTitle from "src/components/PanelTitle";
 import Switch from "src/components/Switch";
+import Skeleton from "src/components/Skeleton";
 import * as constants from "src/variables/constants";
 
 export {
@@ -47,5 +48,6 @@ export {
   PanelFooter,
   PanelTitle,
   Switch,
+  Skeleton,
   constants,
 };
