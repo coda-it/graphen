@@ -1,6 +1,6 @@
 {
   "name": "graphen",
-  "version": "1.10.16",
+  "version": "1.10.17",
   "description": "Graphen is a small library, that keeps reusable blocks of UI and helps making application design consistent across multiple projects.",
   "main": "src/index.ts",
   "files": [
