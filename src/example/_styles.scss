@@ -1,0 +1,16 @@
+$gc-assets-url: './assets' !default;
+
+.example {
+  &__splash-image {
+    background-image: url($gc-assets-url + "/splash.jpg");
+    height: 400px;
+    width: 1000px;
+    background-size: cover;
+    border-radius: $radius-large;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 510px;
+  }
+}
