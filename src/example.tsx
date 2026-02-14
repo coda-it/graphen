@@ -41,7 +41,39 @@ function ExampleApp() {
       <Panel>
         <PanelContent>
           <Card className="example__splash">
-            <div className="example__splash-image" />
+            <div className="hex root">
+              <div className="hex first one"></div>
+              <div className="hex first three"></div>
+              <div className="hex first five"></div>
+              <div className="hex first seven"></div>
+              <div className="hex first nine"></div>
+              <div className="hex first eleven"></div>
+              <div className="hex second one"></div>
+              <div className="hex second three"></div>
+              <div className="hex second five"></div>
+              <div className="hex second seven"></div>
+              <div className="hex second nine"></div>
+              <div className="hex second eleven"></div>
+              <div className="hex third one"></div>
+              <div className="hex third three"></div>
+              <div className="hex third five"></div>
+              <div className="hex third seven"></div>
+              <div className="hex third nine"></div>
+              <div className="hex third eleven"></div>
+              <div className="hex first two"></div>
+              <div className="hex first four"></div>
+              <div className="hex first six"></div>
+              <div className="hex first eight"></div>
+              <div className="hex first ten"></div>
+              <div className="hex first twelve"></div>
+              <div className="hex second two"></div>
+              <div className="hex second four"></div>
+              <div className="hex second six"></div>
+              <div className="hex second eight"></div>
+              <div className="hex second ten"></div>
+              <div className="hex second twelve"></div>
+            </div>
+            <div className="example__logo">graphen v1.x.x</div>
           </Card>
         </PanelContent>
       </Panel>
