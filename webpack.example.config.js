@@ -16,7 +16,7 @@ module.exports = {
   },
   entry: {
     example: './example.tsx',
-    css: './style.scss',
+    css: './example.scss',
   },
   module: {
     rules: [{
