@@ -66,4 +66,11 @@
       background-color: darken($gb-color-danger, 10%);
     }
   }
+
+  &--disabled {
+    background-color: $gb-color-component;
+    color: $gb-color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
