@@ -287,6 +287,7 @@ function ExampleApp() {
             <Button className="gc-btn--primary">Button + primary</Button>{" "}
             <Button className="gc-btn--secondary">Button + secondary</Button>{" "}
             <Button className="gc-btn--tertiary">Button + tertiary</Button>
+            <Button isDisabled>Button + isDisabled</Button>
           </p>
           <p>
             <Button className="gc-btn--small">Button + small</Button>{" "}
@@ -357,12 +358,17 @@ function ExampleApp() {
       <article className="gc-panel gc-panel--separator">
         <header className="gc-panel__title">Tooltips</header>
         <div className="gc-panel__content">
-          <p>
-            <Tooltip type="danger">Tooltip danger message</Tooltip>
-          </p>
+          <Flex className="gm-spacing-bl">
+            <FlexItem isGrow>
+              <Tooltip type="danger">Tooltip danger message</Tooltip>
+            </FlexItem>
+            <FlexItem isGrow>
+              <Tooltip type="success">Tooltip success message</Tooltip>
+            </FlexItem>
+          </Flex>
         </div>
       </article>
-      <article className="gc-panel gc-panel--separator">
+      <article className="gc-panel gc-panel--separator gm-spacing-tl">
         <header className="gc-panel__title">Textarea</header>
         <div className="gc-panel__content">
           <textarea className="gc-textarea" />

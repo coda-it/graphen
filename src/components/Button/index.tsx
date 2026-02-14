@@ -6,16 +6,19 @@ type Props = {
   children: string;
   onClick?: () => void;
   isFull?: boolean;
+  isDisabled?: boolean;
 };
 
 function Button({
   className = "",
   onClick = () => {},
   isFull = false,
+  isDisabled = false,
   children,
 }: Props) {
   const buttonClasses = classNames(className, "gc-btn", {
     "gc-btn--full": isFull,
+    "gc-btn--disabled": isDisabled,
   });
 
   return (
