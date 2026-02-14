@@ -1,0 +1,14 @@
+.example {
+  &__splash {
+    overflow: clip;
+    height: 300px;
+    align-content: center;
+  }
+
+  &__logo {
+    font-size: 32pt;
+    text-align: center;
+    position: relative;
+    top: calc(-4 * var(--ry) / 2);
+  }
+}
