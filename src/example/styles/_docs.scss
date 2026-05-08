@@ -1,4 +1,5 @@
 /* stylelint-disable */
+
 /* Docs-only styles for the Graphen example page.
    Visual design tokens, layout, demo blocks, token tables.
    Library consumers do NOT load this file. */
@@ -6,7 +7,6 @@
 :root {
   --font-sans: "Geist", -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, sfmono-regular, menlo, monospace;
-
   --gb-primary: #337ab7;
   --gb-text: #585858;
   --gb-link: #337ab7;
@@ -15,7 +15,6 @@
   --gb-success: #0ea348;
   --gb-info: #337ab7;
   --gb-danger: #db5551;
-
   --bg: oklch(0.992 0.003 90);
   --bg-elev: #fff;
   --surface: oklch(0.975 0.004 90);
@@ -28,14 +27,11 @@
   --accent: var(--gb-primary);
   --accent-fg: #fff;
   --accent-soft: color-mix(in oklab, var(--accent) 10%, var(--bg));
-
   --radius-sm: 4px;
   --radius: 6px;
   --radius-lg: 10px;
-
   --shadow-sm: 0 1px 0 rgb(20 20 28 / 4%), 0 1px 2px rgb(20 20 28 / 4%);
   --shadow: 0 1px 0 rgb(20 20 28 / 4%), 0 4px 14px rgb(20 20 28 / 6%);
-
   --row-pad-y: 14px;
   --section-pad: 56px;
 }
@@ -74,6 +70,7 @@ body.docs-body {
 .docs * { box-sizing: border-box; }
 .docs a { color: inherit; text-decoration: none; }
 .docs button:not([class*="gc-"]) { font: inherit; color: inherit; cursor: pointer; }
+
 .docs code,
 .docs kbd,
 .docs pre { font-family: var(--font-mono); font-size: 13px; }
