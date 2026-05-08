@@ -5,6 +5,7 @@ import {
   Badge,
   Button,
   Card,
+  Dropdown,
   Input,
   Link,
   Logo,
@@ -146,6 +147,7 @@ const NAV = [
       { id: "header-comp", label: "Header" },
       { id: "separator", label: "Separator" },
       { id: "input", label: "Input" },
+      { id: "dropdown", label: "Dropdown" },
       { id: "card", label: "Card" },
       { id: "badge", label: "Badge" },
     ],
@@ -164,6 +166,7 @@ const TOC = [
   ["header-comp", "Header"],
   ["separator", "Separator"],
   ["input", "Input"],
+  ["dropdown", "Dropdown"],
   ["card", "Card"],
   ["badge", "Badge"],
 ] as const;
@@ -299,6 +302,12 @@ const INSTALL_CMDS: Record<string, string> = {
   yarn: "yarn add graphen",
 };
 
+const DROPDOWN_ITEMS = [
+  { value: "red", label: "Red" },
+  { value: "blue", label: "Blue" },
+  { value: "green", label: "Green" },
+] as const;
+
 function IconCell({ name, d }: { name: string; d: string }) {
   const [copied, setCopied] = useState(false);
   return (
@@ -350,6 +359,7 @@ function App() {
     useState<keyof typeof INSTALL_CMDS>("npm");
   const [activeId, setActiveId] = useState<string>("introduction");
   const [installCopied, setInstallCopied] = useState(false);
+  const [dropdownValue, setDropdownValue] = useState("red");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -819,8 +829,42 @@ function App() {
             </Demo>
           </section>
 
-          <section className="docs-section" id="card">
+          <section className="docs-section" id="dropdown">
             <div className="docs-section-eyebrow">Components / 07</div>
+            <h2 className="docs-section-title">Dropdown</h2>
+            <p className="docs-section-desc">
+              A compact selector for short option lists. Keep labels clear and
+              avoid using it when users need to compare many values at once.
+            </p>
+            <Demo
+              code={`<Dropdown
+  label="Theme accent"
+  initValue={{ value: "${dropdownValue}", label: "${
+                DROPDOWN_ITEMS.find((item) => item.value === dropdownValue)
+                  ?.label
+              }" }}
+  items={[
+    { value: "red", label: "Red" },
+    { value: "blue", label: "Blue" },
+    { value: "green", label: "Green" },
+  ]}
+  onChange={setDropdownValue}
+/>`}
+            >
+              <Dropdown
+                label="Theme accent"
+                initValue={
+                  DROPDOWN_ITEMS.find((item) => item.value === dropdownValue) ||
+                  DROPDOWN_ITEMS[0]
+                }
+                items={DROPDOWN_ITEMS}
+                onChange={setDropdownValue}
+              />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="card">
+            <div className="docs-section-eyebrow">Components / 08</div>
             <h2 className="docs-section-title">Card</h2>
             <p className="docs-section-desc">
               A single-content surface. Don&apos;t nest cards. If a card has
@@ -859,7 +903,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="badge">
-            <div className="docs-section-eyebrow">Components / 08</div>
+            <div className="docs-section-eyebrow">Components / 09</div>
             <h2 className="docs-section-title">Badge</h2>
             <p className="docs-section-desc">
               Small status pills. Use sparingly — one badge per row, never
