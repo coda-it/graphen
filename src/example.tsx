@@ -5,6 +5,7 @@ import {
   Badge,
   Button,
   Card,
+  Dialog,
   Dropdown,
   Input,
   Link,
@@ -150,6 +151,7 @@ const NAV = [
       { id: "separator", label: "Separator" },
       { id: "input", label: "Input" },
       { id: "dropdown", label: "Dropdown" },
+      { id: "dialog", label: "Dialog" },
       { id: "card", label: "Card" },
       { id: "badge", label: "Badge" },
     ],
@@ -169,6 +171,7 @@ const TOC = [
   ["separator", "Separator"],
   ["input", "Input"],
   ["dropdown", "Dropdown"],
+  ["dialog", "Dialog"],
   ["card", "Card"],
   ["badge", "Badge"],
 ] as const;
@@ -362,6 +365,7 @@ function App() {
   const [activeId, setActiveId] = useState<string>("introduction");
   const [installCopied, setInstallCopied] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("red");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -419,21 +423,6 @@ function App() {
           <span>graphen</span>
           <span className="ver">{VERSION}</span>
         </a>
-        <div
-          className="docs-search"
-          role="search"
-          aria-label="Search documentation"
-        >
-          <StrokeIcon size={14} stroke={2}>
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </StrokeIcon>
-          <span>Search components, tokens…</span>
-          <span className="kbd">
-            <span>⌘</span>
-            <span>K</span>
-          </span>
-        </div>
         <div className="docs-tools">
           <button
             type="button"
@@ -865,8 +854,50 @@ function App() {
             </Demo>
           </section>
 
-          <section className="docs-section" id="card">
+          <section className="docs-section" id="dialog">
             <div className="docs-section-eyebrow">Components / 08</div>
+            <h2 className="docs-section-title">Dialog</h2>
+            <p className="docs-section-desc">
+              A fixed overlay surface for focused messages and short actions.
+              Render it conditionally and keep a clear dismissal path.
+            </p>
+            <Demo
+              code={`const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+<Button className="gc-btn--primary" onClick={() => setIsDialogOpen(true)}>
+  Open dialog
+</Button>
+
+{isDialogOpen && (
+  <Dialog isOverlay>
+    <h4>Publish changes?</h4>
+    <p>This action will update the public example bundle.</p>
+    <Button onClick={() => setIsDialogOpen(false)}>Close</Button>
+  </Dialog>
+)}`}
+            >
+              <Button
+                className="gc-btn--primary"
+                onClick={() => setIsDialogOpen(true)}
+              >
+                Open dialog
+              </Button>
+              {isDialogOpen && (
+                <Dialog isOverlay>
+                  <div className="docs-dialog-content">
+                    <h4>Publish changes?</h4>
+                    <p>This action will update the public example bundle.</p>
+                    <Button onClick={() => setIsDialogOpen(false)}>
+                      Close
+                    </Button>
+                  </div>
+                </Dialog>
+              )}
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="card">
+            <div className="docs-section-eyebrow">Components / 09</div>
             <h2 className="docs-section-title">Card</h2>
             <p className="docs-section-desc">
               A single-content surface. Don&apos;t nest cards. If a card has
@@ -905,7 +936,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="badge">
-            <div className="docs-section-eyebrow">Components / 09</div>
+            <div className="docs-section-eyebrow">Components / 10</div>
             <h2 className="docs-section-title">Badge</h2>
             <p className="docs-section-desc">
               Small status pills. Use sparingly — one badge per row, never

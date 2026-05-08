@@ -81,7 +81,7 @@ body.docs-body {
   top: 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: 280px 1fr auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
   height: 56px;
   padding: 0 24px;
@@ -106,41 +106,6 @@ body.docs-body {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 999px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-subtle);
-  }
-}
-
-.docs-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  max-width: 440px;
-  height: 34px;
-  padding: 0 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-muted);
-  font-size: 13px;
-  cursor: text;
-  transition: border-color 0.15s, background 0.15s;
-
-  &:hover { border-color: var(--border-strong); }
-
-  .kbd {
-    margin-left: auto;
-    display: inline-flex;
-    gap: 2px;
-  }
-
-  .kbd > span {
-    padding: 1px 5px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-radius: 4px;
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-subtle);
@@ -691,6 +656,22 @@ body.docs-body {
 .docs-col { display: flex; flex-direction: column; gap: 12px; }
 .docs-spacer-y { height: 16px; }
 
+.docs-dialog-content {
+  max-width: 320px;
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0 0 18px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+  }
+}
+
 .docs-card-eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -716,15 +697,12 @@ body.docs-body {
 @media (max-width: 1180px) {
   .docs-app { grid-template-columns: 240px minmax(0, 1fr); }
   .docs-toc { display: none; }
-  .docs-topbar { grid-template-columns: 240px 1fr auto; }
   .docs-content { padding: 40px 40px 80px; }
 }
 
 @media (max-width: 760px) {
   .docs-app { grid-template-columns: 1fr; }
   .docs-sidebar { display: none; }
-  .docs-topbar { grid-template-columns: 1fr auto; }
-  .docs-search { display: none; }
   .docs-content { padding: 28px 20px 60px; }
   .docs-comp-index { grid-template-columns: repeat(2, 1fr); }
   .docs-title { font-size: 34px; }
