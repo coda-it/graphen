@@ -1,16 +1,15 @@
 .gc-card {
-  border-width: 1px;
-  border-style: solid;
-  border-radius: $radius-medium;
-  padding: $spacing-large;
+  background: $color-white;
+  border: 1px solid $gb-color-component-dark;
+  border-radius: $radius-large;
+  padding: 18px;
+  box-shadow: 0 1px 0 rgba(20, 20, 28, 0.04), 0 1px 2px rgba(20, 20, 28, 0.04);
 
   &--default {
     background-color: $gb-color-component-light;
-    border-color: $gb-color-component-dark;
   }
 
   &--gradient {
     background: linear-gradient(#f5f5f5, #fff 10%);
-    border-color: $gb-color-component-dark;
   }
 }

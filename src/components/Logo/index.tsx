@@ -12,7 +12,8 @@ function Logo({ className = "", onClick = () => {} }: Props) {
   /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
     <span onClick={onClick} className={logoClasses}>
-      CODA_
+      CODA
+      <span className="gc-logo__cursor" aria-hidden="true" />
     </span>
   );
   /* eslint-enable jsx-a11y/no-static-element-interactions */

@@ -23,4 +23,5 @@ $gb-color-danger-soft: $color-beauty-bush !default;
 $gb-color-disabled: $color-boulder !default;
 
 /* Fonts */
-$gb-font: Arial !default;
+$gb-font: 'Geist', -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif !default;
+$gb-font-mono: 'Geist Mono', ui-monospace, sfmono-regular, menlo, monospace !default;

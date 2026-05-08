@@ -9,33 +9,61 @@
 
   &__label {
     display: block;
-    color: $color-boulder;
-    font-size: $font-size-very-large;
-    font-weight: bold;
-    padding-left: $spacing-small;
-    margin-bottom: $spacing-small;
+    margin-bottom: 6px;
+    padding-left: 2px;
+    color: $gb-color-text;
+    font-size: 13px;
+    font-weight: 500;
   }
 
   &__field {
     box-sizing: border-box;
     display: block;
-    border-radius: $radius-medium;
     width: 100%;
-    padding: 0 $spacing-medium;
-    font-size: $font-size-very-large;
-    line-height: 34px;
+    max-width: 280px;
+    height: 36px;
+    padding: 0 12px;
+    background: $color-white;
     border: 1px solid $gb-color-component-dark;
+    border-radius: $radius-medium;
+    color: $gb-color-text;
+    font-family: $gb-font;
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
+
+    &::placeholder {
+      color: $color-boulder;
+    }
+
+    &:focus {
+      border-color: $gb-color-primary;
+      box-shadow: 0 0 0 3px rgba($gb-color-primary, 0.18);
+    }
 
     &--success {
       border-color: $gb-color-success;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($gb-color-success, 0.18);
+      }
     }
 
     &--danger {
       border-color: $gb-color-danger;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($gb-color-danger, 0.18);
+      }
     }
 
     &:disabled {
       border: 0;
+      opacity: 0.6;
     }
+  }
+
+  &--full &__field {
+    max-width: 100%;
   }
 }

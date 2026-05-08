@@ -1,20 +1,23 @@
 .gc-link {
   cursor: pointer;
   text-decoration: none;
+  transition: color 0.12s, border-color 0.12s;
 
   &--primary {
     color: $gb-color-link;
+    border-bottom: 1px solid rgba($gb-color-link, 0.3);
 
     &:hover {
-      color: lighten($gb-color-link, 20%);
+      border-bottom-color: $gb-color-link;
     }
   }
 
   &--default {
     color: $gb-color-text;
+    border-bottom: 1px solid rgba($gb-color-text, 0.25);
 
     &:hover {
-      color: lighten($gb-color-text, 20%);
+      border-bottom-color: $gb-color-text;
     }
   }
 }
