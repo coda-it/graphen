@@ -12,8 +12,9 @@ import {
   Separator,
   constants,
 } from "./index";
+import packageJson from "../package.json";
 
-const VERSION = "v1.10.20";
+const VERSION = `v${packageJson.version}`;
 
 const TOKENS = [
   [

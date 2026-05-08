@@ -574,6 +574,11 @@ body.docs-body {
 [data-theme="dark"] .tok-attr { color: oklch(0.7 0.13 280); }
 [data-theme="dark"] .tok-str { color: oklch(0.7 0.13 150); }
 
+#input .gc-input {
+  width: 100%;
+  max-width: 280px;
+}
+
 .docs-icon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
