@@ -12,9 +12,10 @@ import {
   Separator,
   constants,
 } from "./index";
-import packageJson from "../package.json";
 
-const VERSION = `v${packageJson.version}`;
+declare const GRAPHEN_VERSION: string;
+
+const VERSION = GRAPHEN_VERSION;
 
 const TOKENS = [
   [
