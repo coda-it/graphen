@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const packageJson = require('./package.json');
 
 module.exports = {
   resolve: {
@@ -47,6 +49,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      GRAPHEN_VERSION: JSON.stringify(`v${packageJson.version}`),
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }, { allChunks: true }),

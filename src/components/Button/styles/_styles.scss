@@ -1,75 +1,110 @@
 .gc-btn {
-  @include cx-btn--size(34px);
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   box-sizing: border-box;
-  display: inline-block;
-  font-weight: normal;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
+  height: 36px;
+  padding: 0 14px;
+  background: $gb-color-component;
   border: 1px solid transparent;
-  white-space: nowrap;
   border-radius: $radius-medium;
+  color: $gb-color-text;
+  font-family: $gb-font;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
   user-select: none;
   vertical-align: middle;
+  touch-action: manipulation;
+  transition: background-color 0.12s, border-color 0.12s, color 0.12s, transform 0.04s;
+
+  &:hover {
+    background: $gb-color-component-dark;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 
   &--medium {
-    @include cx-btn--size(34px);
+    height: 36px;
   }
 
   &--small {
-    @include cx-btn--size(20px);
+    height: 28px;
+    padding: 0 10px;
+    font-size: 12.5px;
+    border-radius: $radius-small;
+  }
+
+  &--large {
+    height: 44px;
+    padding: 0 18px;
+    font-size: 14.5px;
+    border-radius: 7px;
   }
 
   &--full {
+    display: flex;
     width: 100%;
-    display: block;
   }
 
   &--primary {
-    background-color: $gb-color-primary;
+    background: $gb-color-primary;
     color: $color-white;
 
     &:hover {
-      background-color: darken($gb-color-primary, 10%);
+      background: darken($gb-color-primary, 10%);
     }
   }
 
+  &--outline,
   &--secondary {
     background: $color-white;
-    color: $gb-color-primary;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $gb-color-primary;
+    border-color: $gb-color-component-dark;
+    color: $gb-color-text;
 
     &:hover {
-      border-color: darken($gb-color-primary, 10%);
-      color: darken($gb-color-primary, 10%);
+      background: $gb-color-component;
+      border-color: $gb-color-text;
     }
   }
 
+  &--ghost,
   &--tertiary {
-    background: $color-white;
-    color: $gb-color-primary;
-    border: none;
+    background: transparent;
+    color: $gb-color-text;
 
     &:hover {
-      color: darken($gb-color-primary, 10%);
+      background: $gb-color-component;
+    }
+  }
+
+  &--success {
+    background: $gb-color-success;
+    color: $color-white;
+
+    &:hover {
+      background: darken($gb-color-success, 10%);
     }
   }
 
   &--danger {
-    background-color: $gb-color-danger;
+    background: $gb-color-danger;
     color: $color-white;
 
     &:hover {
-      background-color: darken($gb-color-danger, 10%);
+      background: darken($gb-color-danger, 10%);
     }
   }
 
-  &--disabled {
-    background-color: $gb-color-component;
-    color: $gb-color-disabled;
+  &--disabled,
+  &[disabled] {
+    opacity: 0.45;
     cursor: not-allowed;
     pointer-events: none;
   }

@@ -1,5 +1,6 @@
 .gc-separator {
-  border-top: 1px solid $gb-color-component-dark;
-  margin-bottom: $spacing-medium;
-  margin-top: $spacing-medium;
+  height: 1px;
+  margin: 8px 0;
+  border: 0;
+  background: $gb-color-component-dark;
 }

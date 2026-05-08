@@ -1,0 +1,38 @@
+.gc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 8px;
+  background: $gb-color-component;
+  border: 1px solid $gb-color-component-dark;
+  border-radius: 999px;
+  color: $gb-color-text;
+  font-family: $gb-font-mono;
+  font-size: 11px;
+
+  &__pulse {
+    width: 6px;
+    height: 6px;
+    background: currentcolor;
+    border-radius: 50%;
+  }
+
+  &--success {
+    background: rgba($gb-color-success, 0.1);
+    border-color: rgba($gb-color-success, 0.3);
+    color: $gb-color-success;
+  }
+
+  &--danger {
+    background: rgba($gb-color-danger, 0.1);
+    border-color: rgba($gb-color-danger, 0.3);
+    color: $gb-color-danger;
+  }
+
+  &--info {
+    background: rgba($gb-color-info, 0.1);
+    border-color: rgba($gb-color-info, 0.3);
+    color: $gb-color-info;
+  }
+}

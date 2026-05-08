@@ -1,0 +1,40 @@
+.gc-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: $gb-color-component;
+  border: 1px solid $gb-color-component-dark;
+  border-radius: $radius-large;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background: rgba($gb-color-primary, 0.14);
+    border-radius: 8px;
+    color: $gb-color-primary;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &__sub {
+    margin-left: auto;
+    font-size: 13px;
+    color: $color-boulder;
+  }
+
+  &--success &__icon {
+    background: rgba($gb-color-success, 0.14);
+    color: $gb-color-success;
+  }
+
+  &--danger &__icon {
+    background: rgba($gb-color-danger, 0.14);
+    color: $gb-color-danger;
+  }
+}

@@ -1,4 +1,5 @@
 import Accordion from "src/components/Accordion";
+import Badge from "src/components/Badge";
 import Button from "src/components/Button";
 import Card from "src/components/Card";
 import Dialog from "src/components/Dialog";
@@ -26,6 +27,7 @@ import * as constants from "src/variables/constants";
 
 export {
   Accordion,
+  Badge,
   Button,
   Card,
   Dialog,
