@@ -5,12 +5,16 @@ import {
   Badge,
   Button,
   Card,
+  CoverEmpty,
   Dialog,
   Dropdown,
+  Icons,
   Input,
   Link,
   Logo,
+  SegmentedControl,
   Separator,
+  Stat,
   constants,
 } from "./index";
 
@@ -124,6 +128,29 @@ const ICONS: ReadonlyArray<readonly [string, string]> = [
   ["plus", "M12 5v14M5 12h14"],
 ];
 
+const ICON_SET: ReadonlyArray<
+  readonly [string, (props: { className?: string }) => React.ReactElement]
+> = [
+  ["IconSearch", Icons.IconSearch],
+  ["IconEdit", Icons.IconEdit],
+  ["IconTrash", Icons.IconTrash],
+  ["IconPlus", Icons.IconPlus],
+  ["IconRefresh", Icons.IconRefresh],
+  ["IconClock", Icons.IconClock],
+  ["IconImg", Icons.IconImg],
+  ["IconMail", Icons.IconMail],
+  ["IconCheck", Icons.IconCheck],
+  ["IconChevron", Icons.IconChevron],
+];
+
+const SEGMENTED_OPTIONS = [
+  { value: "all", label: "All" },
+  { value: "active", label: "Active" },
+  { value: "archived", label: "Archived" },
+] as const;
+
+type SegmentedValue = (typeof SEGMENTED_OPTIONS)[number]["value"];
+
 const NAV = [
   {
     title: "Getting started",
@@ -155,6 +182,9 @@ const NAV = [
       { id: "card", label: "Card" },
       { id: "badge", label: "Badge" },
       { id: "navigation", label: "Navigation" },
+      { id: "segmented-control", label: "Segmented control" },
+      { id: "stat", label: "Stat" },
+      { id: "cover-empty", label: "Cover empty" },
     ],
   },
 ];
@@ -176,6 +206,9 @@ const TOC = [
   ["card", "Card"],
   ["badge", "Badge"],
   ["navigation", "Navigation"],
+  ["segmented-control", "Segmented control"],
+  ["stat", "Stat"],
+  ["cover-empty", "Cover empty"],
 ] as const;
 
 type IconProps = {
@@ -368,6 +401,7 @@ function App() {
   const [installCopied, setInstallCopied] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("red");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [segmentedValue, setSegmentedValue] = useState<SegmentedValue>("all");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -661,6 +695,20 @@ function App() {
             <div className="docs-icon-grid">
               {ICONS.map(([name, d]) => (
                 <IconCell key={name} name={name} d={d} />
+              ))}
+            </div>
+            <h3 className="docs-subsection-title">Icon set</h3>
+            <p className="docs-section-desc">
+              Ready-to-use React icon components exported from{" "}
+              <code>Icons</code>. They inherit <code>currentColor</code>; size
+              and stroke are set by the consumer via a class name.
+            </p>
+            <div className="docs-icon-grid">
+              {ICON_SET.map(([name, IconComponent]) => (
+                <div className="docs-icon-cell docs-iconset-cell" key={name}>
+                  <IconComponent className="docs-iconset-cell__svg" />
+                  <span>{name}</span>
+                </div>
               ))}
             </div>
           </section>
@@ -1022,6 +1070,77 @@ function App() {
                   </a>
                 </li>
               </ul>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="segmented-control">
+            <div className="docs-section-eyebrow">Components / 12</div>
+            <h2 className="docs-section-title">Segmented control</h2>
+            <p className="docs-section-desc">
+              A pill-shaped toggle for switching between a few mutually
+              exclusive views. Prefer it over a dropdown when there are two to
+              four options that benefit from being visible at once.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<SegmentedControl
+  options={[
+    { value: "all", label: "All" },
+    { value: "active", label: "Active" },
+    { value: "archived", label: "Archived" },
+  ]}
+  value="${segmentedValue}"
+  onChange={setSegmentedValue}
+/>`}
+            >
+              <SegmentedControl<SegmentedValue>
+                options={SEGMENTED_OPTIONS}
+                value={segmentedValue}
+                onChange={setSegmentedValue}
+              />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="stat">
+            <div className="docs-section-eyebrow">Components / 13</div>
+            <h2 className="docs-section-title">Stat</h2>
+            <p className="docs-section-desc">
+              A single key figure with a labelled, color-coded dot. Group a few
+              of them to summarise the state of a page. The dot color is set via
+              the <code>modifier</code> prop.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Stat modifier="blue" label="Posts" value="128" />
+<Stat modifier="green" label="Published" value="94" />
+<Stat modifier="amber" label="Drafts" value="26" />
+<Stat modifier="red" label="Flagged" value="8" />`}
+            >
+              <div className="docs-stat-grid">
+                <Stat modifier="blue" label="Posts" value="128" />
+                <Stat modifier="green" label="Published" value="94" />
+                <Stat modifier="amber" label="Drafts" value="26" />
+                <Stat modifier="red" label="Flagged" value="8" />
+              </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="cover-empty">
+            <div className="docs-section-eyebrow">Components / 14</div>
+            <h2 className="docs-section-title">Cover empty</h2>
+            <p className="docs-section-desc">
+              A neutral placeholder for a missing image or empty media slot. It
+              fills its container, so give the parent a fixed size.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<div style={{ width: 160, height: 120 }}>
+  <CoverEmpty />
+</div>`}
+            >
+              <div className="docs-cover-empty-stage">
+                <CoverEmpty />
+              </div>
             </Demo>
           </section>
 
