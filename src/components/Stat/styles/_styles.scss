@@ -1,0 +1,51 @@
+.gc-stat {
+  background: $color-white;
+  border: 1px solid $gb-color-component-dark;
+  border-radius: $radius-large;
+  padding: 16px 18px;
+  box-shadow:
+    0 1px 2px rgb(33 43 54 / 5%),
+    0 1px 1px rgb(33 43 54 / 3%);
+
+  &__key {
+    font-family: $gb-font-mono;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $color-boulder;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $color-silver;
+  }
+
+  &__value {
+    font-size: 27px;
+    font-weight: 600;
+    color: $color-mine-shaft;
+    margin-top: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  &--blue &__dot {
+    background: $gb-color-primary;
+  }
+
+  &--green &__dot {
+    background: $gb-color-success;
+  }
+
+  &--amber &__dot {
+    background: #c77b12;
+  }
+
+  &--red &__dot {
+    background: $gb-color-danger;
+  }
+}

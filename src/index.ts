@@ -4,8 +4,8 @@ import Button from "src/components/Button";
 import Card from "src/components/Card";
 import Dialog from "src/components/Dialog";
 import Icon from "src/components/Icon";
+import * as Icons from "src/components/Icons";
 import Input from "src/components/Input";
-import Image from "src/components/Image";
 import Joystick from "src/components/Joystick";
 import Link from "src/components/Link";
 import Loader from "src/components/Loader";
@@ -23,6 +23,9 @@ import PanelFooter from "src/components/PanelFooter";
 import PanelTitle from "src/components/PanelTitle";
 import Switch from "src/components/Switch";
 import Skeleton from "src/components/Skeleton";
+import CoverEmpty from "src/components/CoverEmpty";
+import SegmentedControl from "src/components/SegmentedControl";
+import Stat from "src/components/Stat";
 import * as constants from "src/variables/constants";
 
 export {
@@ -32,6 +35,7 @@ export {
   Card,
   Dialog,
   Icon,
+  Icons,
   Input,
   Joystick,
   Link,
@@ -41,7 +45,6 @@ export {
   Tooltip,
   Validation,
   Logo,
-  Image,
   Dropdown,
   Flex,
   FlexItem,
@@ -51,5 +54,11 @@ export {
   PanelTitle,
   Switch,
   Skeleton,
+  CoverEmpty,
+  SegmentedControl,
+  Stat,
   constants,
 };
+
+export type { SegmentedControlOption } from "src/components/SegmentedControl";
+export type { StatModifier } from "src/components/Stat";
