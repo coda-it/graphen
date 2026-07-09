@@ -104,6 +104,16 @@ const SPACING = [
   ["$gb-sp-16", "64 px", "4rem", 64],
 ] as const;
 
+const BREAKPOINTS = [
+  ["@include gx-phone", "< 768 px", "up to $g-tablet-width − 1px"],
+  [
+    "@include gx-tablet",
+    "768 – 1023 px",
+    "$g-tablet-width … $g-desktop-width − 1px",
+  ],
+  ["@include gx-desktop", "≥ 1024 px", "$g-desktop-width and up"],
+] as const;
+
 const RADIUS = [
   ["$gb-r-sm", "4 px", 4],
   ["$gb-r", "6 px", 6],
@@ -166,6 +176,7 @@ const NAV = [
       { id: "typography", label: "Typography" },
       { id: "spacing", label: "Spacing & radius" },
       { id: "iconography", label: "Iconography", count: "14" },
+      { id: "responsiveness", label: "Responsiveness" },
     ],
   },
   {
@@ -195,6 +206,7 @@ const TOC = [
   ["typography", "Typography"],
   ["spacing", "Spacing & radius"],
   ["iconography", "Iconography"],
+  ["responsiveness", "Responsiveness"],
   ["logo", "Logo"],
   ["button", "Button"],
   ["link", "Link"],
@@ -711,6 +723,60 @@ function App() {
                 </div>
               ))}
             </div>
+          </section>
+
+          <section className="docs-section" id="responsiveness">
+            <div className="docs-section-eyebrow">Foundations / 05</div>
+            <h2 className="docs-section-title">Responsiveness</h2>
+            <p className="docs-section-desc">
+              Breakpoints are exposed as Sass variables and wrapped by three
+              mixins — <code>gx-phone</code>, <code>gx-tablet</code> and{" "}
+              <code>gx-desktop</code>. Each mixin scopes its block to exactly
+              one range, so the three never overlap. The demo below is styled
+              with the real mixins — resize the window to see the active range
+              light up.
+            </p>
+            <div className="docs-bp-grid" role="table" aria-label="Breakpoints">
+              {BREAKPOINTS.map(([mixin, range, vars]) => (
+                <div className="docs-bp-row" key={mixin}>
+                  <span className="mixin">{mixin}</span>
+                  <span className="range">{range}</span>
+                  <span className="vars">{vars}</span>
+                </div>
+              ))}
+            </div>
+            <div className="docs-spacer-y" />
+            <Demo
+              stageClass="center"
+              code={`.docs-bp-demo .pill { opacity: 0.35; }
+
+@include gx-phone {
+  .docs-bp-demo .pill--phone { opacity: 1; }
+}
+
+@include gx-tablet {
+  .docs-bp-demo .pill--tablet { opacity: 1; }
+}
+
+@include gx-desktop {
+  .docs-bp-demo .pill--desktop { opacity: 1; }
+}`}
+            >
+              <div className="docs-bp-demo">
+                <div className="pill pill--phone">
+                  <span className="nm">gx-phone</span>
+                  <span className="rg">&lt; 768 px</span>
+                </div>
+                <div className="pill pill--tablet">
+                  <span className="nm">gx-tablet</span>
+                  <span className="rg">768 – 1023 px</span>
+                </div>
+                <div className="pill pill--desktop">
+                  <span className="nm">gx-desktop</span>
+                  <span className="rg">≥ 1024 px</span>
+                </div>
+              </div>
+            </Demo>
           </section>
 
           <section className="docs-section" id="logo">
