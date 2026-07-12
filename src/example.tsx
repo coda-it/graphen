@@ -15,6 +15,7 @@ import {
   SegmentedControl,
   Separator,
   Stat,
+  Switch,
   constants,
 } from "./index";
 
@@ -196,6 +197,7 @@ const NAV = [
       { id: "segmented-control", label: "Segmented control" },
       { id: "stat", label: "Stat" },
       { id: "cover-empty", label: "Cover empty" },
+      { id: "switch", label: "Switch" },
     ],
   },
 ];
@@ -221,6 +223,7 @@ const TOC = [
   ["segmented-control", "Segmented control"],
   ["stat", "Stat"],
   ["cover-empty", "Cover empty"],
+  ["switch", "Switch"],
 ] as const;
 
 type IconProps = {
@@ -1207,6 +1210,30 @@ function App() {
               <div className="docs-cover-empty-stage">
                 <CoverEmpty />
               </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="switch">
+            <div className="docs-section-eyebrow">Components / 15</div>
+            <h2 className="docs-section-title">Switch</h2>
+            <p className="docs-section-desc">
+              A toggle for a single on / off setting that takes effect
+              immediately. The <code>type</code> prop colors the active state to
+              match the semantic palette.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<Switch onChange={(isSwitched) => console.log(isSwitched)} />
+<Switch isSwitched />
+<Switch isSwitched type="success" />
+<Switch isSwitched type="info" />
+<Switch isSwitched type="danger" />`}
+            >
+              <Switch />
+              <Switch isSwitched />
+              <Switch isSwitched type="success" />
+              <Switch isSwitched type="info" />
+              <Switch isSwitched type="danger" />
             </Demo>
           </section>
 
