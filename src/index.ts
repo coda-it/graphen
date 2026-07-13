@@ -14,6 +14,8 @@ import Separator from "src/components/Separator";
 import Tooltip from "src/components/Tooltip";
 import Validation from "src/components/Validation";
 import Logo from "src/components/Logo";
+import Navigation from "src/components/Navigation";
+import NavigationOption from "src/components/NavigationOption";
 import Dropdown from "src/components/Dropdown";
 import Flex from "src/components/Flex";
 import FlexItem from "src/components/FlexItem";
@@ -45,6 +47,8 @@ export {
   Tooltip,
   Validation,
   Logo,
+  Navigation,
+  NavigationOption,
   Dropdown,
   Flex,
   FlexItem,

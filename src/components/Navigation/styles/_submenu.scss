@@ -1,14 +1,11 @@
 .gc-submenu {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
   background-color: transparent;
   z-index: $zlayer-top;
 
-  @include gx-phone {
-    left: auto;
-    right: 0;
+  &--opened {
+    display: block;
   }
 
   &__content {

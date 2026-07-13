@@ -12,6 +12,8 @@ import {
   Input,
   Link,
   Logo,
+  Navigation,
+  NavigationOption,
   SegmentedControl,
   Separator,
   Stat,
@@ -1085,60 +1087,36 @@ function App() {
             <h2 className="docs-section-title">Navigation</h2>
             <p className="docs-section-desc">
               Horizontal navigation for top-of-page links. The active option is
-              underlined with the brand color; hover an option that owns a
-              submenu to reveal it.
+              underlined with the brand color; click an option that owns a
+              submenu to open it.
             </p>
             <Demo
               stageClass="column"
-              code={`<ul className="gc-navigation gc-navigation--default">
-  <li className="gc-navigation__option gc-navigation__option--active">
-    <a className="gc-navigation__link" href="#">Overview</a>
-  </li>
-  <li className="gc-navigation__option">
-    <a className="gc-navigation__link" href="#">Components</a>
-    <div className="gc-submenu">
-      <div className="gc-submenu__content">
-        <a className="gc-submenu__item" href="#">Button</a>
-        <a className="gc-submenu__item" href="#">Card</a>
-        <a className="gc-submenu__item" href="#">Dialog</a>
-      </div>
-    </div>
-  </li>
-  <li className="gc-navigation__option">
-    <a className="gc-navigation__link" href="#">Resources</a>
-  </li>
-</ul>`}
+              code={`<Navigation>
+  <NavigationOption label="Overview" href="#" isActive />
+  <NavigationOption label="Components">
+    <a className="gc-submenu__item" href="#">Button</a>
+    <a className="gc-submenu__item" href="#">Card</a>
+    <a className="gc-submenu__item" href="#">Dialog</a>
+  </NavigationOption>
+  <NavigationOption label="Resources" href="#" />
+</Navigation>`}
             >
-              <ul className="gc-navigation gc-navigation--default">
-                <li className="gc-navigation__option gc-navigation__option--active">
-                  <a className="gc-navigation__link" href="#">
-                    Overview
+              <Navigation>
+                <NavigationOption label="Overview" href="#" isActive />
+                <NavigationOption label="Components">
+                  <a className="gc-submenu__item" href="#">
+                    Button
                   </a>
-                </li>
-                <li className="gc-navigation__option">
-                  <a className="gc-navigation__link" href="#">
-                    Components
+                  <a className="gc-submenu__item" href="#">
+                    Card
                   </a>
-                  <div className="gc-submenu">
-                    <div className="gc-submenu__content">
-                      <a className="gc-submenu__item" href="#">
-                        Button
-                      </a>
-                      <a className="gc-submenu__item" href="#">
-                        Card
-                      </a>
-                      <a className="gc-submenu__item" href="#">
-                        Dialog
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="gc-navigation__option">
-                  <a className="gc-navigation__link" href="#">
-                    Resources
+                  <a className="gc-submenu__item" href="#">
+                    Dialog
                   </a>
-                </li>
-              </ul>
+                </NavigationOption>
+                <NavigationOption label="Resources" href="#" />
+              </Navigation>
             </Demo>
           </section>
 
