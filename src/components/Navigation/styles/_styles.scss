@@ -7,24 +7,21 @@
 
   &__option {
     display: inline-block;
-    position: relative;
     border-bottom: 3px solid transparent;
 
     &--active {
       border-color: $gb-color-primary;
     }
-
-    &:hover {
-      .gc-submenu {
-        display: block;
-      }
-    }
   }
 
   &__link {
     display: block;
-    padding-left: $spacing-large;
-    padding-right: $spacing-large;
+    padding: 0 $spacing-large;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
     line-height: 54px;
     font-weight: 600;
   }

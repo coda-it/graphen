@@ -2,20 +2,35 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { render } from "react-dom";
 import {
+  Accordion,
   Badge,
   Button,
   Card,
   CoverEmpty,
   Dialog,
   Dropdown,
+  Flex,
+  FlexItem,
   Icons,
   Input,
+  Joystick,
   Link,
+  Loader,
   Logo,
+  Navigation,
+  NavigationOption,
+  Panel,
+  PanelContent,
+  PanelFooter,
+  PanelTitle,
+  Scroller,
   SegmentedControl,
   Separator,
+  Skeleton,
   Stat,
   Switch,
+  Tooltip,
+  Validation,
   constants,
 } from "./index";
 
@@ -198,6 +213,19 @@ const NAV = [
       { id: "stat", label: "Stat" },
       { id: "cover-empty", label: "Cover empty" },
       { id: "switch", label: "Switch" },
+      { id: "panel", label: "Panel" },
+      { id: "accordion", label: "Accordion" },
+      { id: "flex", label: "Flex" },
+      { id: "loader", label: "Loader" },
+      { id: "skeleton", label: "Skeleton" },
+      { id: "tooltip", label: "Tooltip" },
+      { id: "validation", label: "Validation" },
+      { id: "alert", label: "Alert" },
+      { id: "list", label: "List" },
+      { id: "textarea", label: "Textarea" },
+      { id: "led", label: "LED" },
+      { id: "joystick", label: "Joystick" },
+      { id: "scroller", label: "Scroller" },
     ],
   },
 ];
@@ -224,6 +252,19 @@ const TOC = [
   ["stat", "Stat"],
   ["cover-empty", "Cover empty"],
   ["switch", "Switch"],
+  ["panel", "Panel"],
+  ["accordion", "Accordion"],
+  ["flex", "Flex"],
+  ["loader", "Loader"],
+  ["skeleton", "Skeleton"],
+  ["tooltip", "Tooltip"],
+  ["validation", "Validation"],
+  ["alert", "Alert"],
+  ["list", "List"],
+  ["textarea", "Textarea"],
+  ["led", "LED"],
+  ["joystick", "Joystick"],
+  ["scroller", "Scroller"],
 ] as const;
 
 type IconProps = {
@@ -274,6 +315,39 @@ function CopyButton({
     >
       {copied ? "copied" : label}
     </button>
+  );
+}
+
+function JoystickDemo() {
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+  return (
+    <>
+      <Joystick
+        isEnabled
+        onPositionChange={(left, top) =>
+          setPosition({ left: Math.round(left), top: Math.round(top) })
+        }
+      />
+      <span className="docs-demo-value">
+        left: {position.left} / top: {position.top}
+      </span>
+    </>
+  );
+}
+
+function ScrollerDemo() {
+  const [scrollValue, setScrollValue] = useState(0);
+  return (
+    <>
+      <div className="docs-scroller-track">
+        <Scroller
+          min={0}
+          max={100}
+          onScrollChange={(value) => setScrollValue(Math.round(value))}
+        />
+      </div>
+      <span className="docs-demo-value">value: {scrollValue}</span>
+    </>
   );
 }
 
@@ -1085,60 +1159,36 @@ function App() {
             <h2 className="docs-section-title">Navigation</h2>
             <p className="docs-section-desc">
               Horizontal navigation for top-of-page links. The active option is
-              underlined with the brand color; hover an option that owns a
-              submenu to reveal it.
+              underlined with the brand color; click an option that owns a
+              submenu to open it.
             </p>
             <Demo
               stageClass="column"
-              code={`<ul className="gc-navigation gc-navigation--default">
-  <li className="gc-navigation__option gc-navigation__option--active">
-    <a className="gc-navigation__link" href="#">Overview</a>
-  </li>
-  <li className="gc-navigation__option">
-    <a className="gc-navigation__link" href="#">Components</a>
-    <div className="gc-submenu">
-      <div className="gc-submenu__content">
-        <a className="gc-submenu__item" href="#">Button</a>
-        <a className="gc-submenu__item" href="#">Card</a>
-        <a className="gc-submenu__item" href="#">Dialog</a>
-      </div>
-    </div>
-  </li>
-  <li className="gc-navigation__option">
-    <a className="gc-navigation__link" href="#">Resources</a>
-  </li>
-</ul>`}
+              code={`<Navigation>
+  <NavigationOption label="Overview" href="#" isActive />
+  <NavigationOption label="Components">
+    <a className="gc-submenu__item" href="#">Button</a>
+    <a className="gc-submenu__item" href="#">Card</a>
+    <a className="gc-submenu__item" href="#">Dialog</a>
+  </NavigationOption>
+  <NavigationOption label="Resources" href="#" />
+</Navigation>`}
             >
-              <ul className="gc-navigation gc-navigation--default">
-                <li className="gc-navigation__option gc-navigation__option--active">
-                  <a className="gc-navigation__link" href="#">
-                    Overview
+              <Navigation>
+                <NavigationOption label="Overview" href="#" isActive />
+                <NavigationOption label="Components">
+                  <a className="gc-submenu__item" href="#">
+                    Button
                   </a>
-                </li>
-                <li className="gc-navigation__option">
-                  <a className="gc-navigation__link" href="#">
-                    Components
+                  <a className="gc-submenu__item" href="#">
+                    Card
                   </a>
-                  <div className="gc-submenu">
-                    <div className="gc-submenu__content">
-                      <a className="gc-submenu__item" href="#">
-                        Button
-                      </a>
-                      <a className="gc-submenu__item" href="#">
-                        Card
-                      </a>
-                      <a className="gc-submenu__item" href="#">
-                        Dialog
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="gc-navigation__option">
-                  <a className="gc-navigation__link" href="#">
-                    Resources
+                  <a className="gc-submenu__item" href="#">
+                    Dialog
                   </a>
-                </li>
-              </ul>
+                </NavigationOption>
+                <NavigationOption label="Resources" href="#" />
+              </Navigation>
             </Demo>
           </section>
 
@@ -1234,6 +1284,306 @@ function App() {
               <Switch isSwitched type="success" />
               <Switch isSwitched type="info" />
               <Switch isSwitched type="danger" />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="panel">
+            <div className="docs-section-eyebrow">Components / 16</div>
+            <h2 className="docs-section-title">Panel</h2>
+            <p className="docs-section-desc">
+              A composable surface for grouping related content. Combine{" "}
+              <code>PanelTitle</code>, <code>PanelContent</code> and{" "}
+              <code>PanelFooter</code>; <code>isBordered</code> outlines the
+              panel and <code>isSeparator</code> draws dividers between the
+              parts.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Panel isBordered>
+  <PanelTitle>Billing</PanelTitle>
+  <PanelContent>Invoices are issued on the first day of each month.</PanelContent>
+  <PanelFooter>Last updated today</PanelFooter>
+</Panel>
+<Panel isSeparator>
+  <PanelTitle>Notifications</PanelTitle>
+  <PanelContent>Choose how you want to be notified about activity.</PanelContent>
+</Panel>`}
+            >
+              <Panel isBordered>
+                <PanelTitle>Billing</PanelTitle>
+                <PanelContent>
+                  Invoices are issued on the first day of each month.
+                </PanelContent>
+                <PanelFooter>Last updated today</PanelFooter>
+              </Panel>
+              <Panel isSeparator>
+                <PanelTitle>Notifications</PanelTitle>
+                <PanelContent>
+                  Choose how you want to be notified about activity.
+                </PanelContent>
+              </Panel>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="accordion">
+            <div className="docs-section-eyebrow">Components / 17</div>
+            <h2 className="docs-section-title">Accordion</h2>
+            <p className="docs-section-desc">
+              A collapsible panel for secondary content. It starts collapsed by
+              default — click the title to expand it.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Accordion title="Shipping details">
+  Orders placed before noon ship the same day. Tracking is emailed
+  once the parcel leaves the warehouse.
+</Accordion>`}
+            >
+              <Accordion title="Shipping details">
+                Orders placed before noon ship the same day. Tracking is emailed
+                once the parcel leaves the warehouse.
+              </Accordion>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="flex">
+            <div className="docs-section-eyebrow">Components / 18</div>
+            <h2 className="docs-section-title">Flex</h2>
+            <p className="docs-section-desc">
+              A thin flexbox wrapper. <code>FlexItem</code> children opt into
+              growing or shrinking; <code>isVertical</code> stacks them as a
+              column.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Flex>
+  <FlexItem>aside</FlexItem>
+  <FlexItem isGrow>main content</FlexItem>
+  <FlexItem>aside</FlexItem>
+</Flex>
+<Flex isVertical>
+  <FlexItem>row one</FlexItem>
+  <FlexItem>row two</FlexItem>
+</Flex>`}
+            >
+              <Flex className="docs-flex-demo">
+                <FlexItem className="docs-flex-box">aside</FlexItem>
+                <FlexItem className="docs-flex-box" isGrow>
+                  main content
+                </FlexItem>
+                <FlexItem className="docs-flex-box">aside</FlexItem>
+              </Flex>
+              <Flex isVertical>
+                <FlexItem className="docs-flex-box">row one</FlexItem>
+                <FlexItem className="docs-flex-box">row two</FlexItem>
+              </Flex>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="loader">
+            <div className="docs-section-eyebrow">Components / 19</div>
+            <h2 className="docs-section-title">Loader</h2>
+            <p className="docs-section-desc">
+              An indeterminate spinner for blocking waits. The ring mixes white
+              and gray strokes, so it reads best on dark or tinted surfaces.
+            </p>
+            <Demo stageClass="center" code="<Loader />">
+              <div className="docs-loader-stage">
+                <Loader />
+              </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="skeleton">
+            <div className="docs-section-eyebrow">Components / 20</div>
+            <h2 className="docs-section-title">Skeleton</h2>
+            <p className="docs-section-desc">
+              A shimmering placeholder line for content that is still loading.
+              Compose several with varying widths to sketch the final layout.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Skeleton />
+<Skeleton />
+<Skeleton />`}
+            >
+              <div className="docs-skeleton-demo">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+              </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="tooltip">
+            <div className="docs-section-eyebrow">Components / 21</div>
+            <h2 className="docs-section-title">Tooltip</h2>
+            <p className="docs-section-desc">
+              A small anchored bubble for contextual feedback. It positions
+              absolutely against the nearest positioned ancestor; the{" "}
+              <code>type</code> prop keys the color to the semantic palette.
+            </p>
+            <Demo
+              code={`<Tooltip type="success">Saved successfully</Tooltip>
+<Tooltip type="danger">Something went wrong</Tooltip>`}
+            >
+              <div className="docs-tooltip-anchor">
+                <Tooltip type="success">Saved successfully</Tooltip>
+              </div>
+              <div className="docs-tooltip-anchor">
+                <Tooltip type="danger">Something went wrong</Tooltip>
+              </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="validation">
+            <div className="docs-section-eyebrow">Components / 22</div>
+            <h2 className="docs-section-title">Validation</h2>
+            <p className="docs-section-desc">
+              Wraps a form control and reveals a tooltip with the validation
+              message on hover. Hover the inputs below to see it.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Validation type="danger" message="Email is required">
+  <Input label="Email" type="email" validation="danger" />
+</Validation>
+<Validation type="success" message="Looks good">
+  <Input label="Username" type="text" validation="success" />
+</Validation>`}
+            >
+              <Validation type="danger" message="Email is required">
+                <Input label="Email" type="email" validation="danger" />
+              </Validation>
+              <Validation type="success" message="Looks good">
+                <Input label="Username" type="text" validation="success" />
+              </Validation>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="alert">
+            <div className="docs-section-eyebrow">Components / 23</div>
+            <h2 className="docs-section-title">Alert</h2>
+            <p className="docs-section-desc">
+              A bordered message box for inline page-level feedback. Styles-only
+              primitive — apply the classes to your own markup.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<div className="gc-alert gc-alert--info">A new version is available.</div>
+<div className="gc-alert gc-alert--success">Settings saved.</div>
+<div className="gc-alert gc-alert--danger">Could not reach the server.</div>`}
+            >
+              <div className="gc-alert gc-alert--info">
+                A new version is available.
+              </div>
+              <div className="gc-alert gc-alert--success">Settings saved.</div>
+              <div className="gc-alert gc-alert--danger">
+                Could not reach the server.
+              </div>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="list">
+            <div className="docs-section-eyebrow">Components / 24</div>
+            <h2 className="docs-section-title">List</h2>
+            <p className="docs-section-desc">
+              A bordered stack of rows for simple records. Styles-only primitive
+              — apply the classes to your own markup.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<ul className="gc-list">
+  <li className="gc-list__item">Production deploy</li>
+  <li className="gc-list__item">Staging deploy</li>
+  <li className="gc-list__item">Nightly backup</li>
+</ul>`}
+            >
+              <ul className="gc-list docs-list-demo">
+                <li className="gc-list__item">Production deploy</li>
+                <li className="gc-list__item">Staging deploy</li>
+                <li className="gc-list__item">Nightly backup</li>
+              </ul>
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="textarea">
+            <div className="docs-section-eyebrow">Components / 25</div>
+            <h2 className="docs-section-title">Textarea</h2>
+            <p className="docs-section-desc">
+              Multi-line text input matching the Input styling. Styles-only
+              primitive — apply the class to a native textarea.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<textarea className="gc-textarea" rows={3} placeholder="Describe the issue…" />`}
+            >
+              <textarea
+                className="gc-textarea"
+                rows={3}
+                placeholder="Describe the issue…"
+              />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="led">
+            <div className="docs-section-eyebrow">Components / 26</div>
+            <h2 className="docs-section-title">LED</h2>
+            <p className="docs-section-desc">
+              A status light for dashboards and device panels. Add{" "}
+              <code>gc-led--blink</code> for attention-demanding states.
+              Styles-only primitive.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<span className="gc-led gc-led--green" />
+<span className="gc-led gc-led--blue" />
+<span className="gc-led gc-led--red" />
+<span className="gc-led gc-led--red gc-led--blink" />`}
+            >
+              <span className="gc-led gc-led--green" />
+              <span className="gc-led gc-led--blue" />
+              <span className="gc-led gc-led--red" />
+              <span className="gc-led gc-led--red gc-led--blink" />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="joystick">
+            <div className="docs-section-eyebrow">Components / 27</div>
+            <h2 className="docs-section-title">Joystick</h2>
+            <p className="docs-section-desc">
+              A draggable two-axis control for hardware-like interfaces. Drag
+              the knob — the position is reported through{" "}
+              <code>onPositionChange</code>.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<Joystick
+  isEnabled
+  onPositionChange={(left, top) => console.log(left, top)}
+/>`}
+            >
+              <JoystickDemo />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="scroller">
+            <div className="docs-section-eyebrow">Components / 28</div>
+            <h2 className="docs-section-title">Scroller</h2>
+            <p className="docs-section-desc">
+              A draggable horizontal slider for scrubbing through a range. Drag
+              the knob — the position is reported through{" "}
+              <code>onScrollChange</code> when the knob is released.
+            </p>
+            <Demo
+              stageClass="center"
+              code={`<Scroller
+  min={0}
+  max={100}
+  onScrollChange={(value) => console.log(value)}
+/>`}
+            >
+              <ScrollerDemo />
             </Demo>
           </section>
 
