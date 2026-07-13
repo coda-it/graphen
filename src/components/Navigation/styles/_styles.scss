@@ -7,6 +7,7 @@
 
   &__option {
     display: inline-block;
+    position: relative;
     border-bottom: 3px solid transparent;
 
     &--active {
@@ -14,7 +15,7 @@
     }
 
     &:hover {
-      .gc-navigation__suboption {
+      .gc-submenu {
         display: block;
       }
     }
