@@ -605,6 +605,63 @@ body.docs-body {
   overflow: hidden;
 }
 
+.docs-flex-demo {
+  width: 100%;
+}
+
+.docs-flex-box {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.docs-loader-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 96px;
+  border-radius: var(--radius-lg);
+  background: #23272e;
+}
+
+.docs-skeleton-demo {
+  width: 260px;
+
+  .gc-skeleton:nth-child(2) {
+    width: 80%;
+  }
+
+  .gc-skeleton:nth-child(3) {
+    width: 55%;
+  }
+}
+
+.docs-tooltip-anchor {
+  position: relative;
+  width: 180px;
+  height: 56px;
+}
+
+.docs-list-demo {
+  width: 100%;
+  max-width: 360px;
+  margin: 0;
+}
+
+.docs-scroller-track {
+  width: 240px;
+}
+
+.docs-demo-value {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
 .docs-type-row {
   display: grid;
   grid-template-columns: 80px 80px 1fr;
