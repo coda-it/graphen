@@ -1,6 +1,6 @@
 describe("dropdown menu", () => {
   it("should open dropdown and pick a value", () => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
 
     cy.get("#dropdown").scrollIntoView();
 
