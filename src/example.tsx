@@ -1190,6 +1190,43 @@ function App() {
                 <NavigationOption label="Resources" href="#" />
               </Navigation>
             </Demo>
+            <p className="docs-section-desc">
+              Inside a narrow container the navigation scrolls horizontally. The
+              submenu follows its scrolled parent option and stays within the
+              viewport.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<div style={{ maxWidth: 280, overflowX: "auto" }}>
+  <Navigation>
+    <NavigationOption label="Overview" href="#" isActive />
+    <NavigationOption label="Admin" href="#" />
+    <NavigationOption label="Platform">
+      <a className="gc-submenu__item" href="#">Users</a>
+      <a className="gc-submenu__item" href="#">Events</a>
+    </NavigationOption>
+    <NavigationOption label="e-Shop" href="#" />
+    <NavigationOption label="Account" href="#" />
+  </Navigation>
+</div>`}
+            >
+              <div style={{ maxWidth: 280, overflowX: "auto" }}>
+                <Navigation>
+                  <NavigationOption label="Overview" href="#" isActive />
+                  <NavigationOption label="Admin" href="#" />
+                  <NavigationOption label="Platform">
+                    <a className="gc-submenu__item" href="#">
+                      Users
+                    </a>
+                    <a className="gc-submenu__item" href="#">
+                      Events
+                    </a>
+                  </NavigationOption>
+                  <NavigationOption label="e-Shop" href="#" />
+                  <NavigationOption label="Account" href="#" />
+                </Navigation>
+              </div>
+            </Demo>
           </section>
 
           <section className="docs-section" id="segmented-control">
