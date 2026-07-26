@@ -38,7 +38,9 @@ function SidebarOption({
       {count != null && (
         <span className="gc-sidebar__option-count">{count}</span>
       )}
-      <span className="gc-sidebar__option-tip">{label}</span>
+      <span className="gc-sidebar__option-tip" aria-hidden="true">
+        {label}
+      </span>
     </>
   );
 

@@ -151,10 +151,23 @@ $gc-sidebar-width-collapsed: 72px;
       padding: 0;
     }
 
-    .gc-sidebar__option-label,
     .gc-sidebar__option-count,
     .gc-sidebar__option-badge {
       display: none;
+    }
+
+    // Hide the label visually but keep it in the accessibility tree so the
+    // icon-only option still exposes an accessible name to screen readers.
+    .gc-sidebar__option-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
     }
 
     .gc-sidebar__option:hover .gc-sidebar__option-tip {
