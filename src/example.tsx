@@ -26,6 +26,10 @@ import {
   Scroller,
   SegmentedControl,
   Separator,
+  Sidebar,
+  SidebarGroup,
+  SidebarOption,
+  SidebarFooter,
   Skeleton,
   Stat,
   Switch,
@@ -209,6 +213,7 @@ const NAV = [
       { id: "card", label: "Card" },
       { id: "badge", label: "Badge" },
       { id: "navigation", label: "Navigation" },
+      { id: "sidebar", label: "Sidebar" },
       { id: "segmented-control", label: "Segmented control" },
       { id: "stat", label: "Stat" },
       { id: "cover-empty", label: "Cover empty" },
@@ -248,6 +253,7 @@ const TOC = [
   ["card", "Card"],
   ["badge", "Badge"],
   ["navigation", "Navigation"],
+  ["sidebar", "Sidebar"],
   ["segmented-control", "Segmented control"],
   ["stat", "Stat"],
   ["cover-empty", "Cover empty"],
@@ -332,6 +338,65 @@ function JoystickDemo() {
         left: {position.left} / top: {position.top}
       </span>
     </>
+  );
+}
+
+function SidebarDemo() {
+  const [active, setActive] = useState("posts");
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  return (
+    <div className="docs-sidebar-demo">
+      <Button
+        className="gc-btn--outline"
+        onClick={() => setIsCollapsed((value) => !value)}
+      >
+        {isCollapsed ? "Expand" : "Collapse"}
+      </Button>
+      <div className="docs-sidebar-stage">
+        <Sidebar isCollapsed={isCollapsed}>
+          <SidebarGroup label="Content">
+            <SidebarOption
+              label="Posts"
+              icon={<Icons.IconEdit />}
+              count={24}
+              isActive={active === "posts"}
+              onClick={() => setActive("posts")}
+            />
+            <SidebarOption
+              label="Gallery"
+              icon={<Icons.IconImg />}
+              count={312}
+              isActive={active === "gallery"}
+              onClick={() => setActive("gallery")}
+            />
+            <SidebarOption
+              label="Email templates"
+              icon={<Icons.IconMail />}
+              isActive={active === "email"}
+              onClick={() => setActive("email")}
+            />
+          </SidebarGroup>
+          <SidebarGroup label="Support">
+            <SidebarOption
+              label="Helpdesk"
+              icon={<Icons.IconClock />}
+              count={3}
+              badge="new"
+              isActive={active === "helpdesk"}
+              onClick={() => setActive("helpdesk")}
+            />
+          </SidebarGroup>
+          <SidebarFooter>
+            <SidebarOption
+              label="Account"
+              icon={<Icons.IconCheck />}
+              isActive={active === "account"}
+              onClick={() => setActive("account")}
+            />
+          </SidebarFooter>
+        </Sidebar>
+      </div>
+    </div>
   );
 }
 
@@ -1229,8 +1294,39 @@ function App() {
             </Demo>
           </section>
 
-          <section className="docs-section" id="segmented-control">
+          <section className="docs-section" id="sidebar">
             <div className="docs-section-eyebrow">Components / 12</div>
+            <h2 className="docs-section-title">Sidebar</h2>
+            <p className="docs-section-desc">
+              Vertical navigation rail for application shells. Compose it from{" "}
+              <code>SidebarGroup</code> sections, <code>SidebarOption</code>{" "}
+              items with icons, counts and badges, and an optional{" "}
+              <code>SidebarFooter</code> pinned to the bottom. Set{" "}
+              <code>isCollapsed</code> to shrink it to an icons-only rail with
+              hover tooltips.
+            </p>
+            <Demo
+              stageClass="column"
+              code={`<Sidebar isCollapsed={collapsed}>
+  <SidebarGroup label="Content">
+    <SidebarOption label="Posts" icon={<Icons.IconEdit />} count={24} isActive />
+    <SidebarOption label="Gallery" icon={<Icons.IconImg />} count={312} />
+    <SidebarOption label="Email templates" icon={<Icons.IconMail />} />
+  </SidebarGroup>
+  <SidebarGroup label="Support">
+    <SidebarOption label="Helpdesk" icon={<Icons.IconClock />} count={3} badge="new" />
+  </SidebarGroup>
+  <SidebarFooter>
+    <SidebarOption label="Account" icon={<Icons.IconCheck />} />
+  </SidebarFooter>
+</Sidebar>`}
+            >
+              <SidebarDemo />
+            </Demo>
+          </section>
+
+          <section className="docs-section" id="segmented-control">
+            <div className="docs-section-eyebrow">Components / 13</div>
             <h2 className="docs-section-title">Segmented control</h2>
             <p className="docs-section-desc">
               A pill-shaped toggle for switching between a few mutually
@@ -1258,7 +1354,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="stat">
-            <div className="docs-section-eyebrow">Components / 13</div>
+            <div className="docs-section-eyebrow">Components / 14</div>
             <h2 className="docs-section-title">Stat</h2>
             <p className="docs-section-desc">
               A single key figure with a labelled, color-coded dot. Group a few
@@ -1282,7 +1378,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="cover-empty">
-            <div className="docs-section-eyebrow">Components / 14</div>
+            <div className="docs-section-eyebrow">Components / 15</div>
             <h2 className="docs-section-title">Cover empty</h2>
             <p className="docs-section-desc">
               A neutral placeholder for a missing image or empty media slot. It
@@ -1301,7 +1397,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="switch">
-            <div className="docs-section-eyebrow">Components / 15</div>
+            <div className="docs-section-eyebrow">Components / 16</div>
             <h2 className="docs-section-title">Switch</h2>
             <p className="docs-section-desc">
               A toggle for a single on / off setting that takes effect
@@ -1325,7 +1421,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="panel">
-            <div className="docs-section-eyebrow">Components / 16</div>
+            <div className="docs-section-eyebrow">Components / 17</div>
             <h2 className="docs-section-title">Panel</h2>
             <p className="docs-section-desc">
               A composable surface for grouping related content. Combine{" "}
@@ -1363,7 +1459,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="accordion">
-            <div className="docs-section-eyebrow">Components / 17</div>
+            <div className="docs-section-eyebrow">Components / 18</div>
             <h2 className="docs-section-title">Accordion</h2>
             <p className="docs-section-desc">
               A collapsible panel for secondary content. It starts collapsed by
@@ -1384,7 +1480,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="flex">
-            <div className="docs-section-eyebrow">Components / 18</div>
+            <div className="docs-section-eyebrow">Components / 19</div>
             <h2 className="docs-section-title">Flex</h2>
             <p className="docs-section-desc">
               A thin flexbox wrapper. <code>FlexItem</code> children opt into
@@ -1418,7 +1514,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="loader">
-            <div className="docs-section-eyebrow">Components / 19</div>
+            <div className="docs-section-eyebrow">Components / 20</div>
             <h2 className="docs-section-title">Loader</h2>
             <p className="docs-section-desc">
               An indeterminate spinner for blocking waits. The ring mixes white
@@ -1432,7 +1528,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="skeleton">
-            <div className="docs-section-eyebrow">Components / 20</div>
+            <div className="docs-section-eyebrow">Components / 21</div>
             <h2 className="docs-section-title">Skeleton</h2>
             <p className="docs-section-desc">
               A shimmering placeholder line for content that is still loading.
@@ -1453,7 +1549,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="tooltip">
-            <div className="docs-section-eyebrow">Components / 21</div>
+            <div className="docs-section-eyebrow">Components / 22</div>
             <h2 className="docs-section-title">Tooltip</h2>
             <p className="docs-section-desc">
               A small anchored bubble for contextual feedback. It positions
@@ -1474,7 +1570,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="validation">
-            <div className="docs-section-eyebrow">Components / 22</div>
+            <div className="docs-section-eyebrow">Components / 23</div>
             <h2 className="docs-section-title">Validation</h2>
             <p className="docs-section-desc">
               Wraps a form control and reveals a tooltip with the validation
@@ -1499,7 +1595,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="alert">
-            <div className="docs-section-eyebrow">Components / 23</div>
+            <div className="docs-section-eyebrow">Components / 24</div>
             <h2 className="docs-section-title">Alert</h2>
             <p className="docs-section-desc">
               A bordered message box for inline page-level feedback. Styles-only
@@ -1522,7 +1618,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="list">
-            <div className="docs-section-eyebrow">Components / 24</div>
+            <div className="docs-section-eyebrow">Components / 25</div>
             <h2 className="docs-section-title">List</h2>
             <p className="docs-section-desc">
               A bordered stack of rows for simple records. Styles-only primitive
@@ -1545,7 +1641,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="textarea">
-            <div className="docs-section-eyebrow">Components / 25</div>
+            <div className="docs-section-eyebrow">Components / 26</div>
             <h2 className="docs-section-title">Textarea</h2>
             <p className="docs-section-desc">
               Multi-line text input matching the Input styling. Styles-only
@@ -1564,7 +1660,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="led">
-            <div className="docs-section-eyebrow">Components / 26</div>
+            <div className="docs-section-eyebrow">Components / 27</div>
             <h2 className="docs-section-title">LED</h2>
             <p className="docs-section-desc">
               A status light for dashboards and device panels. Add{" "}
@@ -1586,7 +1682,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="joystick">
-            <div className="docs-section-eyebrow">Components / 27</div>
+            <div className="docs-section-eyebrow">Components / 28</div>
             <h2 className="docs-section-title">Joystick</h2>
             <p className="docs-section-desc">
               A draggable two-axis control for hardware-like interfaces. Drag
@@ -1605,7 +1701,7 @@ function App() {
           </section>
 
           <section className="docs-section" id="scroller">
-            <div className="docs-section-eyebrow">Components / 28</div>
+            <div className="docs-section-eyebrow">Components / 29</div>
             <h2 className="docs-section-title">Scroller</h2>
             <p className="docs-section-desc">
               A draggable horizontal slider for scrubbing through a range. Drag

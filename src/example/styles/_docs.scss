@@ -662,6 +662,22 @@ body.docs-body {
   color: var(--text-muted);
 }
 
+.docs-sidebar-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.docs-sidebar-stage {
+  display: flex;
+  height: 380px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .docs-type-row {
   display: grid;
   grid-template-columns: 80px 80px 1fr;
