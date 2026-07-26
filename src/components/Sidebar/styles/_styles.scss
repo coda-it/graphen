@@ -134,6 +134,10 @@ $gc-sidebar-width-collapsed: 72px;
 
   &--collapsed {
     width: $gc-sidebar-width-collapsed;
+    // `overflow-y: auto` on the block forces `overflow-x` to compute to
+    // `auto` as well, which would clip the hover tooltip at the rail edge.
+    // Collapsed rails hold few items, so drop scrolling to let tips escape.
+    overflow: visible;
 
     .gc-sidebar__group-label {
       height: 8px;

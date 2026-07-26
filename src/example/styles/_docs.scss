@@ -673,9 +673,16 @@ body.docs-body {
 .docs-sidebar-stage {
   display: flex;
   height: 380px;
+  width: fit-content;
   border: 1px solid var(--border);
   border-radius: 10px;
-  overflow: hidden;
+
+  // Keep the rail's own corners tidy without an overflow clip, which would
+  // trap the collapsed-mode hover tooltip that extends past the rail edge.
+  .gc-sidebar {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
 }
 
 .docs-type-row {
