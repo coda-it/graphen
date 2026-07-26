@@ -1,0 +1,190 @@
+$gc-sidebar-width: 264px;
+$gc-sidebar-width-collapsed: 72px;
+
+.gc-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: $gc-sidebar-width;
+  padding: $spacing-large;
+  background-color: $color-white;
+  border-right: 1px solid $gb-color-separator;
+  overflow-y: auto;
+  transition: width 0.18s ease;
+
+  &__group {
+    margin-top: $spacing-very-large;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__group-label {
+    padding: $spacing-medium $spacing-large $spacing-small;
+    font-family: $gb-font-mono;
+    font-size: $font-size-medium;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: $gb-color-disabled;
+  }
+
+  &__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-large;
+    width: 100%;
+    height: 39px;
+    padding: 0 $spacing-large;
+    border: 0;
+    border-radius: $radius-medium;
+    background: none;
+    color: $gb-color-text;
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.12s ease,
+      color 0.12s ease;
+
+    &:hover {
+      background-color: $gb-color-component;
+      color: $gb-color-text;
+      text-decoration: none;
+    }
+
+    &--active {
+      background-color: $gb-color-info-soft;
+      color: $gb-color-primary;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -#{$spacing-large};
+        top: 8px;
+        bottom: 8px;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
+        background-color: $gb-color-primary;
+      }
+    }
+  }
+
+  &__option-icon {
+    display: flex;
+    flex: none;
+
+    svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__option-label {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__option-count {
+    padding: 1px 8px;
+    border-radius: 999px;
+    background-color: $gb-color-component;
+    font-family: $gb-font-mono;
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $gb-color-disabled;
+  }
+
+  &__option--active &__option-count {
+    background-color: $color-white;
+    color: $gb-color-primary;
+  }
+
+  &__option-badge {
+    padding: 2px 6px;
+    border-radius: $radius-small;
+    background-color: $gb-color-success-soft;
+    font-family: $gb-font-mono;
+    font-size: $font-size-medium;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $gb-color-success;
+  }
+
+  &__option-tip {
+    display: none;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: $spacing-large;
+    border-top: 1px solid $gb-color-separator;
+  }
+
+  &--collapsed {
+    width: $gc-sidebar-width-collapsed;
+    // `overflow-y: auto` on the block forces `overflow-x` to compute to
+    // `auto` as well, which would clip the hover tooltip at the rail edge.
+    // Collapsed rails hold few items, so drop scrolling to let tips escape.
+    overflow: visible;
+
+    .gc-sidebar__group-label {
+      height: 8px;
+      padding: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .gc-sidebar__option {
+      justify-content: center;
+      padding: 0;
+    }
+
+    .gc-sidebar__option-count,
+    .gc-sidebar__option-badge {
+      display: none;
+    }
+
+    // Hide the label visually but keep it in the accessibility tree so the
+    // icon-only option still exposes an accessible name to screen readers.
+    .gc-sidebar__option-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .gc-sidebar__option:hover .gc-sidebar__option-tip {
+      display: block;
+      position: absolute;
+      left: calc(100% + #{$spacing-large});
+      top: 50%;
+      transform: translateY(-50%);
+      padding: $spacing-medium $spacing-large;
+      border-radius: $radius-medium;
+      background-color: $gb-color-text;
+      box-shadow: $gc-shadow-default;
+      font-size: $font-size-large;
+      font-weight: 600;
+      color: $color-white;
+      white-space: nowrap;
+      z-index: $zlayer-top;
+    }
+  }
+}

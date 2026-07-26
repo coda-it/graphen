@@ -11,6 +11,10 @@ import Link from "src/components/Link";
 import Loader from "src/components/Loader";
 import Scroller from "src/components/Scroller";
 import Separator from "src/components/Separator";
+import Sidebar from "src/components/Sidebar";
+import SidebarGroup from "src/components/SidebarGroup";
+import SidebarOption from "src/components/SidebarOption";
+import SidebarFooter from "src/components/SidebarFooter";
 import Tooltip from "src/components/Tooltip";
 import Validation from "src/components/Validation";
 import Logo from "src/components/Logo";
@@ -44,6 +48,10 @@ export {
   Loader,
   Scroller,
   Separator,
+  Sidebar,
+  SidebarGroup,
+  SidebarOption,
+  SidebarFooter,
   Tooltip,
   Validation,
   Logo,
