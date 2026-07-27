@@ -187,4 +187,15 @@ $gc-sidebar-width-collapsed: 72px;
       z-index: $zlayer-top;
     }
   }
+
+  // On touch devices the hover tooltip the collapsed rail relies on to reveal
+  // item labels never fires, so `overflow: visible` gains nothing to escape
+  // and only lets a rail taller than the viewport spill its icons out of the
+  // block. Contain the rail's own scroll there instead.
+  @media (hover: none) {
+    &--collapsed {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
 }
