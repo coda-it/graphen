@@ -126,6 +126,109 @@ $gc-sidebar-width-collapsed: 72px;
     display: none;
   }
 
+  &__option-caret {
+    display: flex;
+    flex: none;
+    margin-right: -2px;
+    transition: transform 0.16s ease;
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: $gb-color-disabled;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &--expanded {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__option--active &__option-caret svg,
+  &__option--branch &__option-caret svg {
+    stroke: $gb-color-primary;
+  }
+
+  &__block {
+    position: relative;
+  }
+
+  &__subnav {
+    display: grid;
+    // `0fr` (not `0`) keeps the collapsed track a zero fraction so it can
+    // animate to `1fr`; the zero-unit lint rule misreads the grid fraction.
+    grid-template-rows: 0fr; // stylelint-disable-line length-zero-no-unit
+    transition: grid-template-rows 0.2s ease;
+
+    &--open {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__subnav-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__suboption {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-large;
+    width: 100%;
+    height: 34px;
+    margin-left: 9px;
+    padding: 0 $spacing-large 0 22px;
+    border: 0;
+    border-left: 1.5px solid $gb-color-separator;
+    border-radius: 0 $radius-medium $radius-medium 0;
+    background: none;
+    color: $gb-color-disabled;
+    font: inherit;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.11s ease,
+      color 0.11s ease,
+      border-color 0.11s ease;
+
+    &:hover {
+      background-color: $gb-color-component;
+      color: $gb-color-text;
+      text-decoration: none;
+    }
+
+    &--active {
+      border-left-color: $gb-color-primary;
+      background-color: $gb-color-info-soft;
+      color: $gb-color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__suboption-label {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__suboption-count {
+    font-family: $gb-font-mono;
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $gb-color-disabled;
+  }
+
+  &__suboption--active &__suboption-count {
+    color: $gb-color-primary;
+  }
+
   &__footer {
     margin-top: auto;
     padding-top: $spacing-large;
@@ -152,7 +255,9 @@ $gc-sidebar-width-collapsed: 72px;
     }
 
     .gc-sidebar__option-count,
-    .gc-sidebar__option-badge {
+    .gc-sidebar__option-badge,
+    .gc-sidebar__option-caret,
+    .gc-sidebar__subnav {
       display: none;
     }
 

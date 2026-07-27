@@ -29,6 +29,8 @@ import {
   Sidebar,
   SidebarGroup,
   SidebarOption,
+  SidebarSubmenu,
+  SidebarSubOption,
   SidebarFooter,
   Skeleton,
   Stat,
@@ -342,8 +344,11 @@ function JoystickDemo() {
 }
 
 function SidebarDemo() {
-  const [active, setActive] = useState("posts");
+  const [active, setActive] = useState("posts-all");
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isPostsExpanded, setIsPostsExpanded] = useState(true);
+  const postsChildren = ["posts-all", "posts-drafts", "posts-scheduled"];
+  const hasActivePostsChild = postsChildren.includes(active);
   return (
     <div className="docs-sidebar-demo">
       <Button
@@ -355,13 +360,33 @@ function SidebarDemo() {
       <div className="docs-sidebar-stage">
         <Sidebar isCollapsed={isCollapsed}>
           <SidebarGroup label="Content">
-            <SidebarOption
+            <SidebarSubmenu
               label="Posts"
               icon={<Icons.IconEdit />}
-              count={24}
-              isActive={active === "posts"}
-              onClick={() => setActive("posts")}
-            />
+              isExpanded={isPostsExpanded}
+              hasActiveChild={hasActivePostsChild}
+              isActive={hasActivePostsChild && !isPostsExpanded}
+              onToggle={() => setIsPostsExpanded((value) => !value)}
+            >
+              <SidebarSubOption
+                label="All posts"
+                count={24}
+                isActive={active === "posts-all"}
+                onClick={() => setActive("posts-all")}
+              />
+              <SidebarSubOption
+                label="Drafts"
+                count={5}
+                isActive={active === "posts-drafts"}
+                onClick={() => setActive("posts-drafts")}
+              />
+              <SidebarSubOption
+                label="Scheduled"
+                count={2}
+                isActive={active === "posts-scheduled"}
+                onClick={() => setActive("posts-scheduled")}
+              />
+            </SidebarSubmenu>
             <SidebarOption
               label="Gallery"
               icon={<Icons.IconImg />}
@@ -1301,7 +1326,9 @@ function App() {
               Vertical navigation rail for application shells. Compose it from{" "}
               <code>SidebarGroup</code> sections, <code>SidebarOption</code>{" "}
               items with icons, counts and badges, and an optional{" "}
-              <code>SidebarFooter</code> pinned to the bottom. Set{" "}
+              <code>SidebarFooter</code> pinned to the bottom. Nest a{" "}
+              <code>SidebarSubmenu</code> with <code>SidebarSubOption</code>{" "}
+              children to build a collapsible sub-group. Set{" "}
               <code>isCollapsed</code> to shrink it to an icons-only rail with
               hover tooltips.
             </p>
@@ -1309,7 +1336,18 @@ function App() {
               stageClass="column"
               code={`<Sidebar isCollapsed={collapsed}>
   <SidebarGroup label="Content">
-    <SidebarOption label="Posts" icon={<Icons.IconEdit />} count={24} isActive />
+    <SidebarSubmenu
+      label="Posts"
+      icon={<Icons.IconEdit />}
+      isExpanded={postsExpanded}
+      hasActiveChild={active.startsWith("posts-")}
+      isActive={active.startsWith("posts-") && !postsExpanded}
+      onToggle={() => setPostsExpanded((value) => !value)}
+    >
+      <SidebarSubOption label="All posts" count={24} isActive />
+      <SidebarSubOption label="Drafts" count={5} />
+      <SidebarSubOption label="Scheduled" count={2} />
+    </SidebarSubmenu>
     <SidebarOption label="Gallery" icon={<Icons.IconImg />} count={312} />
     <SidebarOption label="Email templates" icon={<Icons.IconMail />} />
   </SidebarGroup>

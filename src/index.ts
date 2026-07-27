@@ -14,6 +14,8 @@ import Separator from "src/components/Separator";
 import Sidebar from "src/components/Sidebar";
 import SidebarGroup from "src/components/SidebarGroup";
 import SidebarOption from "src/components/SidebarOption";
+import SidebarSubmenu from "src/components/SidebarSubmenu";
+import SidebarSubOption from "src/components/SidebarSubOption";
 import SidebarFooter from "src/components/SidebarFooter";
 import Tooltip from "src/components/Tooltip";
 import Validation from "src/components/Validation";
@@ -51,6 +53,8 @@ export {
   Sidebar,
   SidebarGroup,
   SidebarOption,
+  SidebarSubmenu,
+  SidebarSubOption,
   SidebarFooter,
   Tooltip,
   Validation,
